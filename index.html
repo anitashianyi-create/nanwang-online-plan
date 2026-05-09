@@ -44,7 +44,7 @@
       height: min(56.25vw, 100vh);
       min-height: 620px;
       margin: 0 auto;
-      padding: 58px 72px 54px;
+      padding: clamp(50px, 5.2vh, 72px) clamp(82px, 5.2vw, 112px) clamp(56px, 5vh, 74px);
       scroll-snap-align: start;
       display: flex;
       flex-direction: column;
@@ -89,7 +89,7 @@
     h1, h2, h3, p { margin: 0; }
 
     h1 {
-      max-width: 940px;
+      max-width: 1120px;
       font-size: 58px;
       line-height: 1.08;
       letter-spacing: 0;
@@ -97,10 +97,16 @@
     }
 
     h2 {
-      max-width: 960px;
+      max-width: 1180px;
       font-size: 42px;
       line-height: 1.16;
       letter-spacing: 0;
+    }
+
+    .highlight-text {
+      color: var(--green);
+      font-weight: 900;
+      text-shadow: 0 10px 26px rgba(0, 91, 172, .16);
     }
 
     h3 {
@@ -110,7 +116,7 @@
     }
 
     .lead {
-      max-width: 820px;
+      max-width: 960px;
       margin-top: 22px;
       font-size: 22px;
       line-height: 1.62;
@@ -141,21 +147,21 @@
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
-      margin-top: 34px;
+      margin-top: 38px;
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 20px;
-      margin-top: 32px;
+      margin-top: 36px;
     }
 
     .insight-split {
       display: grid;
       grid-template-columns: .92fr 1.08fr;
       gap: 24px;
-      margin-top: 30px;
+      margin-top: 36px;
       align-items: stretch;
     }
 
@@ -229,7 +235,7 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 28px;
+      margin-top: 34px;
     }
 
     .argument-card {
@@ -253,12 +259,141 @@
       line-height: 1.45;
     }
 
+    .painpoint-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .painpoint-card {
+      min-height: 454px;
+      padding: 0;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.9);
+      overflow: hidden;
+      box-shadow: 0 14px 34px rgba(10, 55, 92, .08);
+    }
+
+    .painpoint-shot {
+      height: 286px;
+      padding: 12px;
+      width: 100%;
+      border: 0;
+      background: linear-gradient(180deg, #eef6fc, #f8fbfe);
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      cursor: zoom-in;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .painpoint-shot img {
+      display: block;
+      width: 210px;
+      height: 100%;
+      object-fit: cover;
+      object-position: var(--shot-x, center) var(--shot-y, top);
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(10, 55, 92, .12);
+      background: #fff;
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .painpoint-shot:hover img {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 28px rgba(10, 55, 92, .18);
+    }
+
+    .painpoint-shot::after {
+      content: "点击看原图";
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(0,91,172,.86);
+      font-size: 12px;
+      font-weight: 900;
+      box-shadow: 0 8px 18px rgba(10,55,92,.18);
+    }
+
+    .painpoint-copy {
+      padding: 14px 16px 16px;
+    }
+
+    .painpoint-card small {
+      display: inline-flex;
+      margin-bottom: 8px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      color: var(--green);
+      background: #edf7fd;
+      border: 1px solid #cfe4f5;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .painpoint-card strong {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.2;
+    }
+
+    .painpoint-card p {
+      color: #405b54;
+      font-size: 13.5px;
+      line-height: 1.34;
+    }
+
+    .painpoint-card b {
+      color: var(--green);
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .trend-bridge {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .trend-item {
+      padding: 17px 18px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 16px 36px rgba(10, 55, 92, .14);
+    }
+
+    .trend-item strong {
+      display: block;
+      margin-bottom: 7px;
+      color: #ffca3a;
+      font-size: 18px;
+    }
+
+    .trend-item p {
+      color: rgba(255,255,255,.9);
+      font-size: 14.5px;
+      line-height: 1.4;
+    }
+
     .service-flow {
       position: relative;
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 40px;
+      margin-top: 44px;
       align-items: stretch;
     }
 
@@ -275,7 +410,7 @@
 
     .service-node {
       position: relative;
-      min-height: 286px;
+      min-height: 304px;
       padding: 24px 20px 22px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -378,12 +513,10 @@
       font-size: 20px;
       font-weight: 800;
       line-height: 1.42;
-      opacity: 0;
-      transform: translateY(18px);
     }
 
     #slide-2.is-animating .flow-conclusion {
-      animation: conclusionReveal .72s cubic-bezier(.2,.72,.16,1) forwards 3.2s;
+      animation: conclusionReveal .34s cubic-bezier(.2,.72,.16,1) forwards;
     }
 
     @keyframes conclusionReveal {
@@ -557,6 +690,378 @@
       color: var(--green);
       font-size: 22px;
       font-weight: 900;
+    }
+
+    .why-goal-stage {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .why-card {
+      min-height: 176px;
+      padding: 22px 22px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 92% 10%, rgba(0,160,223,.11), transparent 28%),
+        rgba(255,255,255,.92);
+      box-shadow: 0 14px 34px rgba(10, 55, 92, .08);
+    }
+
+    .why-card small {
+      display: inline-flex;
+      margin-bottom: 12px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .why-card strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .why-card p {
+      color: #405b54;
+      font-size: 16px;
+      line-height: 1.42;
+    }
+
+    .goal-bridge {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      margin-top: 24px;
+      padding: 18px 22px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 18px 42px rgba(10, 55, 92, .16);
+    }
+
+    .goal-bridge strong {
+      flex: 0 0 auto;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+
+    .goal-bridge p {
+      color: rgba(255,255,255,.92);
+      font-size: 17px;
+      line-height: 1.42;
+    }
+
+    .goal-pill-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .goal-pill {
+      min-height: 112px;
+      padding: 18px 20px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 14px 34px rgba(10,55,92,.08);
+    }
+
+    .goal-pill b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--green);
+      font-size: 22px;
+    }
+
+    .goal-pill span {
+      color: #405b54;
+      font-size: 15px;
+      line-height: 1.4;
+      font-weight: 700;
+    }
+
+    .logic-console {
+      display: grid;
+      grid-template-columns: 390px 1fr;
+      gap: 22px;
+      margin-top: 28px;
+      align-items: stretch;
+      --logic-a: var(--green);
+      --logic-b: var(--blue);
+    }
+
+    .logic-tabs {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .logic-tab {
+      position: relative;
+      min-width: 132px;
+      min-height: 58px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      border: 1px solid #cfe4f5;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(255,255,255,.82));
+      box-shadow:
+        0 10px 0 rgba(0,0,0,.05),
+        0 16px 28px rgba(10,55,92,.08);
+      text-align: left;
+      cursor: pointer;
+      transition: transform .24s ease, background .24s ease, color .24s ease, box-shadow .24s ease;
+    }
+
+    .logic-tab small {
+      display: none;
+      margin-bottom: 0;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .logic-tab strong {
+      display: block;
+      text-align: center;
+      font-size: 20px;
+      line-height: 1.18;
+    }
+
+    .logic-tab.is-active,
+    .logic-tab:hover {
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0) 38%),
+        linear-gradient(135deg, var(--logic-a), var(--logic-b));
+      transform: translateY(-4px);
+      box-shadow:
+        0 10px 0 rgba(0,91,172,.16),
+        0 18px 34px rgba(0,91,172,.2);
+    }
+
+    .logic-tab.is-active small,
+    .logic-tab:hover small {
+      color: #ffca3a;
+    }
+
+    .logic-stage {
+      display: grid;
+      min-height: 230px;
+      padding: 28px 34px;
+      border-radius: 8px;
+      border: 1px solid rgba(0,91,172,.16);
+      background:
+        radial-gradient(circle at 92% 12%, color-mix(in srgb, var(--logic-b) 16%, transparent), transparent 26%),
+        rgba(255,255,255,.94);
+      box-shadow: 0 20px 52px rgba(10,55,92,.1);
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .logic-stage.is-switching {
+      opacity: .25;
+      transform: translateY(8px);
+    }
+
+    .logic-label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--logic-a);
+      background: color-mix(in srgb, var(--logic-b) 10%, #fff);
+      border: 1px solid color-mix(in srgb, var(--logic-a) 18%, #cfe4f5);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .logic-stage h3 {
+      max-width: 820px;
+      margin-top: 0;
+      color: var(--ink);
+      font-size: 32px;
+      line-height: 1.14;
+    }
+
+    .logic-stage p {
+      max-width: 840px;
+      margin-top: 14px;
+      color: #405b54;
+      font-size: 19px;
+      line-height: 1.5;
+    }
+
+    .logic-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .logic-proof div {
+      min-height: 94px;
+      padding: 14px;
+      border-radius: 8px;
+      background: #f4f9fd;
+      border: 1px solid #d7e5f2;
+    }
+
+    .logic-proof b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--logic-a);
+      font-size: 16px;
+    }
+
+    .logic-proof span {
+      color: #405b54;
+      font-size: 14px;
+      line-height: 1.36;
+      font-weight: 700;
+    }
+
+    .logic-result {
+      margin-top: 22px;
+      padding: 16px 18px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--logic-a), var(--logic-b));
+      font-size: 18px;
+      line-height: 1.42;
+      font-weight: 900;
+    }
+
+    .goal-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .goal-strip .goal-pill {
+      min-height: 94px;
+      padding: 16px 18px;
+    }
+
+    .why-stack {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .why-point {
+      min-height: 112px;
+      padding: 18px 20px;
+      border-radius: 8px;
+      color: #fff;
+      background:
+        radial-gradient(circle at 92% 10%, rgba(255,202,58,.24), transparent 30%),
+        linear-gradient(135deg, var(--green), var(--blue));
+      box-shadow: 0 14px 34px rgba(10,55,92,.12);
+    }
+
+    .why-point strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffca3a;
+      font-size: 21px;
+      line-height: 1.18;
+    }
+
+    .why-point p {
+      color: rgba(255,255,255,.92);
+      font-size: 15.5px;
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .goal-orbit {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      margin: 0 auto;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at center, #fff 0 29%, transparent 30%),
+        radial-gradient(circle at center, rgba(255,255,255,.92) 0 42%, transparent 43%),
+        conic-gradient(from 220deg, rgba(0,160,223,.42), rgba(0,91,172,.18), rgba(0,160,223,.10), rgba(0,160,223,.42));
+      box-shadow: 0 24px 58px rgba(10,55,92,.12);
+    }
+
+    .goal-orbit::before,
+    .goal-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(0,91,172,.16);
+    }
+
+    .goal-orbit::before { inset: 28px; }
+    .goal-orbit::after { inset: 72px; }
+
+    .goal-orbit-core {
+      position: absolute;
+      inset: 100px;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,.96);
+      box-shadow: inset 0 0 0 1px rgba(0,91,172,.12);
+      padding: 20px;
+    }
+
+    .goal-orbit-core span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .goal-orbit-core strong {
+      display: block;
+      color: var(--ink);
+      font-size: 26px;
+      line-height: 1.05;
+      white-space: pre-line;
+    }
+
+    .goal-workbench {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+      align-content: start;
+    }
+
+    .goal-workbench-hint {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .goal-workbench-hint::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 0 rgba(0,160,223,.34);
+      animation: hintPulse 1.5s ease-out infinite;
     }
 
     .proposition-stage {
@@ -829,7 +1334,7 @@
     }
 
     .benchmark-switcher {
-      margin-top: 16px;
+      margin-top: 24px;
     }
 
     .benchmark-tabs {
@@ -1003,11 +1508,113 @@
       font-weight: 900;
     }
 
+    .xhs-benchmark-layout {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .xhs-evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      min-height: 430px;
+    }
+
+    .xhs-evidence-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: #f4f9fd;
+      box-shadow: 0 16px 36px rgba(10, 55, 92, .08);
+    }
+
+    .xhs-evidence-card img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      display: block;
+      object-fit: cover;
+      object-position: top center;
+    }
+
+    .xhs-evidence-card span {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      right: 10px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: rgba(16, 43, 70, .78);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 900;
+      text-align: center;
+    }
+
+    .xhs-analysis-panel {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr) auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 18px 46px rgba(10, 55, 92, .08);
+    }
+
+    .xhs-analysis-item {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .xhs-analysis-item small {
+      display: inline-flex;
+      margin-bottom: 7px;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .xhs-analysis-item strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 20px;
+      line-height: 1.2;
+      color: var(--ink);
+    }
+
+    .xhs-analysis-item p {
+      color: #405b54;
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
+    .xhs-analysis-conclusion {
+      padding: 18px 20px;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      color: #fff;
+    }
+
+    .xhs-analysis-conclusion strong {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 19px;
+    }
+
+    .xhs-analysis-conclusion p {
+      color: rgba(255,255,255,.92);
+      font-size: 15px;
+      line-height: 1.42;
+    }
+
     .platform-dashboard {
       display: grid;
       grid-template-columns: 270px 1fr;
       gap: 28px;
-      margin-top: 28px;
+      margin-top: 34px;
       align-items: stretch;
       --phase-a: var(--green);
       --phase-b: var(--blue);
@@ -1128,7 +1735,7 @@
       position: relative;
       display: grid;
       grid-template-rows: 1fr auto;
-      min-height: 360px;
+      min-height: 386px;
       padding: 22px;
       border: 1px solid var(--line);
       border-radius: 8px;
@@ -1291,15 +1898,15 @@
 
     .compact-lead {
       max-width: 1040px;
-      margin-top: 10px;
+      margin-top: 18px;
       color: var(--muted);
       font-size: 17px;
       line-height: 1.45;
     }
 
     .card {
-      min-height: 138px;
-      padding: 24px;
+      min-height: 164px;
+      padding: 28px;
       border: 1px solid var(--line);
       border-radius: 8px;
       background: rgba(255,255,255,.82);
@@ -1400,7 +2007,7 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 28px;
-      margin-top: 34px;
+      margin-top: 38px;
       align-items: stretch;
     }
 
@@ -1500,6 +2107,14 @@
     .voice-card.redbook .ip-preview img {
       object-position: 18% 42%;
       transform: scale(1.06);
+    }
+
+    .voice-card.douyin .ip-preview img,
+    .voice-card.redbook .ip-preview img {
+      object-fit: contain;
+      object-position: center;
+      transform: none;
+      background: #f6fbff;
     }
 
     .ip-label {
@@ -1611,6 +2226,27 @@
       display: block;
     }
 
+    .ip-lightbox.is-painpoint {
+      padding: 26px 34px 34px;
+    }
+
+    .ip-lightbox.is-painpoint .ip-lightbox-frame {
+      width: min(430px, calc(100vw - 72px));
+      height: min(82vh, 820px);
+      margin: 0 auto;
+      align-self: center;
+      background: #fff;
+    }
+
+    .ip-lightbox.is-painpoint .ip-lightbox-frame img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
     .voice-copy {
       min-width: 0;
     }
@@ -1686,7 +2322,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin-top: 36px;
+      margin-top: 38px;
       align-items: stretch;
     }
 
@@ -1736,7 +2372,7 @@
       display: grid;
       grid-template-columns: 1fr 1.24fr 1fr;
       gap: 26px;
-      margin-top: 32px;
+      margin-top: 38px;
       align-items: center;
     }
 
@@ -2007,7 +2643,7 @@
     .column-carousel {
       position: relative;
       height: 392px;
-      margin-top: 30px;
+      margin-top: 38px;
       overflow: hidden;
       touch-action: pan-y;
       user-select: none;
@@ -2220,7 +2856,7 @@
       display: grid;
       grid-template-columns: 318px 1fr;
       gap: 16px;
-      margin-top: 8px;
+      margin-top: 18px;
       align-items: stretch;
     }
 
@@ -2973,7 +3609,7 @@
       display: grid;
       grid-template-columns: 264px 1fr;
       gap: 18px;
-      margin-top: 22px;
+      margin-top: 32px;
       align-items: stretch;
     }
 
@@ -3240,7 +3876,7 @@
       display: grid;
       grid-template-columns: 250px 1fr;
       gap: 18px;
-      margin-top: 22px;
+      margin-top: 32px;
       align-items: stretch;
     }
 
@@ -3404,6 +4040,163 @@
       height: 100%;
       border-radius: inherit;
       background: #ffca3a;
+    }
+
+    .traffic-board {
+      display: grid;
+      grid-template-columns: .58fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+      align-items: stretch;
+    }
+
+    .traffic-rhythm,
+    .traffic-platform {
+      border-radius: 8px;
+      border: 1px solid rgba(0,91,172,.15);
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 18px 42px rgba(10,55,92,.09);
+    }
+
+    .traffic-rhythm {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 22px;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(255,202,58,.22), transparent 32%),
+        rgba(255,255,255,.92);
+    }
+
+    .traffic-rhythm small,
+    .traffic-platform small {
+      display: inline-flex;
+      width: fit-content;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--green);
+      background: #edf7fd;
+      border: 1px solid #cfe4f5;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .traffic-rhythm strong {
+      display: block;
+      margin-top: 16px;
+      color: var(--ink);
+      font-size: 28px;
+      line-height: 1.14;
+    }
+
+    .traffic-rhythm p {
+      margin-top: 12px;
+      color: #405b54;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .traffic-calendar {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .traffic-calendar span {
+      display: grid;
+      gap: 4px;
+      padding: 12px;
+      border-radius: 8px;
+      color: #405b54;
+      background: #f4f9fd;
+      border: 1px solid #d7e5f2;
+      font-size: 14px;
+      line-height: 1.3;
+    }
+
+    .traffic-calendar b {
+      color: var(--green);
+      font-size: 15px;
+    }
+
+    .traffic-platform {
+      padding: 20px;
+    }
+
+    .traffic-platform h3 {
+      margin-top: 12px;
+      color: var(--ink);
+      font-size: 27px;
+      line-height: 1.14;
+    }
+
+    .traffic-platform .traffic-intro {
+      margin-top: 10px;
+      color: #405b54;
+      font-size: 16px;
+      line-height: 1.43;
+    }
+
+    .traffic-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .traffic-action {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: 10px;
+      min-height: 86px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #f4f9fd;
+      border: 1px solid #d7e5f2;
+    }
+
+    .traffic-action i {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-style: normal;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .traffic-action b {
+      display: block;
+      color: var(--green);
+      font-size: 16px;
+      line-height: 1.22;
+    }
+
+    .traffic-action span {
+      display: block;
+      margin-top: 4px;
+      color: #405b54;
+      font-size: 14px;
+      line-height: 1.36;
+    }
+
+    .traffic-kpi {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .traffic-kpi span {
+      padding: 7px 9px;
+      border-radius: 999px;
+      color: #31536e;
+      background: #fff7df;
+      border: 1px solid #f0c56c;
+      font-size: 12px;
+      font-weight: 900;
     }
 
     .route-board {
@@ -3654,14 +4447,14 @@
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 34px;
+      margin-top: 42px;
       align-items: stretch;
     }
 
     .product-step {
       position: relative;
-      min-height: 310px;
-      padding: 24px 22px;
+      min-height: 330px;
+      padding: 28px 24px;
       border-radius: 8px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,.92);
@@ -3735,7 +4528,7 @@
       display: grid;
       grid-template-columns: .82fr 1.18fr;
       gap: 24px;
-      margin-top: 30px;
+      margin-top: 38px;
       align-items: stretch;
     }
 
@@ -3816,7 +4609,7 @@
     }
 
     .ai-showcase-slide {
-      padding: 30px 58px 42px;
+      padding: clamp(34px, 4.2vh, 56px) clamp(66px, 4.6vw, 96px) clamp(42px, 4.4vh, 62px);
       background:
         radial-gradient(circle at 10% 12%, rgba(255,202,58,.18), transparent 26%),
         radial-gradient(circle at 92% 18%, rgba(0,160,223,.16), transparent 28%),
@@ -3989,7 +4782,7 @@
     }
 
     .compliance-slide {
-      padding: 34px 64px 46px;
+      padding: clamp(38px, 4.6vh, 58px) clamp(76px, 5vw, 104px) clamp(46px, 4.6vh, 66px);
       justify-content: center;
       background:
         radial-gradient(circle at 10% 16%, rgba(215,166,61,.18), transparent 26%),
@@ -4144,7 +4937,7 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 16px;
-      margin-top: 34px;
+      margin-top: 42px;
     }
 
     .phase {
@@ -4315,6 +5108,105 @@
       box-shadow: 0 10px 24px rgba(185, 121, 0, .13);
     }
 
+    #slide-16 .grid-3 {
+      margin-top: 36px;
+      align-items: stretch;
+    }
+
+    #slide-16 .grid-3 .card {
+      overflow: hidden;
+      min-height: 318px;
+      padding: 28px 26px;
+      border: 1px solid #d7e5f2;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.96), rgba(246,251,255,.92));
+      box-shadow: 0 18px 44px rgba(10,55,92,.1);
+    }
+
+    #slide-16 .grid-3 .card:nth-child(1) {
+      border-top: 8px solid #005bac;
+    }
+
+    #slide-16 .grid-3 .card:nth-child(2) {
+      border-top: 8px solid #d88a00;
+    }
+
+    #slide-16 .grid-3 .card:nth-child(3) {
+      border-top: 8px solid #008a5b;
+    }
+
+    #slide-16 .big-number {
+      margin-bottom: 20px;
+      font-size: 74px;
+      line-height: .96;
+      letter-spacing: 0;
+      text-shadow: none;
+    }
+
+    #slide-16 .metric-label {
+      display: block;
+      margin-bottom: 9px;
+      color: #5f7284;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    #slide-16 .metric-line {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(10,55,92,.1);
+    }
+
+    #slide-16 .metric-line:last-child {
+      border-bottom: 0;
+    }
+
+    #slide-16 .metric-line b {
+      color: #5f7284;
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    #slide-16 .metric-line span {
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    #slide-16 .grid-3 .card:nth-child(1) .metric-line span,
+    #slide-16 .grid-3 .card:nth-child(1) .big-number {
+      color: #005bac;
+    }
+
+    #slide-16 .grid-3 .card:nth-child(2) .metric-line span,
+    #slide-16 .grid-3 .card:nth-child(2) .big-number {
+      color: #d88a00;
+    }
+
+    #slide-16 .grid-3 .card:nth-child(3) .metric-line span,
+    #slide-16 .grid-3 .card:nth-child(3) .big-number {
+      color: #008a5b;
+    }
+
+    #slide-16 .grid-3 .card strong {
+      display: block;
+      color: var(--ink);
+      font-size: 27px;
+      line-height: 1.16;
+    }
+
+    #slide-16 .grid-3 .card p {
+      margin-top: 14px;
+      color: #405b54;
+      font-size: 18px;
+      line-height: 1.45;
+      font-weight: 800;
+    }
+
     .footer {
       position: absolute;
       left: 72px;
@@ -4395,7 +5287,7 @@
       h1 { font-size: 40px; }
       h2 { font-size: 30px; }
       .lead { font-size: 18px; }
-      .grid-2, .grid-3, .matrix, .voice-system, .voice-bottom, .flow, .synergy-map, .core-channels, .synergy-principles, .topic-detail, .planning-grid, .timeline, .insight-split, .argument-grid, .benchmark-grid, .account-observe, .insight-callout, .service-flow, .proposition-stage, .benchmark-stage, .platform-dashboard, .channel-panels, .xhs-console, .xhs-detail-grid, .ai-showcase-grid, .ai-video-pair, .ai-poster-pair, .ai-feature-row {
+      .grid-2, .grid-3, .matrix, .voice-system, .voice-bottom, .flow, .synergy-map, .core-channels, .synergy-principles, .topic-detail, .planning-grid, .timeline, .insight-split, .argument-grid, .painpoint-grid, .trend-bridge, .why-goal-stage, .goal-pill-row, .logic-console, .logic-proof, .goal-strip, .why-stack, .benchmark-grid, .account-observe, .insight-callout, .service-flow, .proposition-stage, .benchmark-stage, .platform-dashboard, .channel-panels, .xhs-console, .xhs-detail-grid, .ai-showcase-grid, .ai-video-pair, .ai-poster-pair, .ai-feature-row, .product-flow-panel, .platform-frame {
         grid-template-columns: 1fr;
       }
       .step::after { display: none; }
@@ -4421,7 +5313,7 @@
       .xhs-detail { min-height: auto; padding: 22px; }
       .xhs-detail-head { flex-direction: column; }
       .ops-topline { flex-direction: column; align-items: flex-start; }
-      .calendar-board, .boost-board, .route-board, .boost-stage, .route-stage, .calendar-stage, .compliance-grid { grid-template-columns: 1fr; }
+      .calendar-board, .boost-board, .route-board, .boost-stage, .route-stage, .calendar-stage, .traffic-board, .compliance-grid { grid-template-columns: 1fr; }
       .week-tab, .boost-tab, .route-tab { min-height: 64px; }
       .week-tab:hover, .boost-tab:hover, .route-tab:hover { transform: none; }
       .calendar-main h3, .boost-main h3, .route-main h3 { font-size: 24px; }
@@ -4441,7 +5333,7 @@
     <section class="slide" id="slide-1">
       <div class="section-kicker">南网在线</div>
       <h1>小红书 & 抖音双平台新媒体运营规划方案</h1>
-      <p class="lead">以“内容即服务”为核心，将新媒体账号建设为服务前台、品牌触点和 APP 引流入口。</p>
+      <p class="lead">以“用户相关内容”为核心，重建品牌触达、流量增长和 APP 转化链路，让南网在线从服务工具升级为用户身边的电力服务伙伴。</p>
       <div class="meta">
         <span class="pill">南方电网客户服务场景</span>
         <span class="pill">2026年4月</span>
@@ -4451,109 +5343,152 @@
       <div class="footer"><span>南网在线双平台新媒体运营规划</span><span>01 / 17</span></div>
     </section>
 
-    <section class="slide" id="slide-2">
-      <div class="section-kicker">01 战略背景</div>
-      <h2>公共服务新媒体化，本质是服务入口前移</h2>
-      <p class="lead">用户的问题正在内容平台发生，央企账号也正在从“权威发布”走向“服务沟通”。</p>
-      <div class="service-flow">
-        <div class="service-node">
-          <div class="node-icon">1</div>
-          <h3>用户问题出现</h3>
-          <p>用电疑问先出现在生活场景里，不一定直接进入 APP。</p>
-          <div class="node-tags"><span>电费</span><span>阶梯电价</span><span>充电桩</span><span>安全用电</span></div>
+    <section class="slide compact-slide" id="slide-2">
+      <div class="section-kicker">第一部分 · 痛点诊断</div>
+      <h2>现有渠道不是没有运营，而是都被“官方发布”限制了效果</h2>
+      <p class="compact-lead">公众号、APP 资讯、视频号/抖音都在发内容，但内容重心仍偏公告、新闻和品牌展示，用户看不到和自己直接相关的服务价值。</p>
+      <div class="painpoint-grid">
+        <div class="painpoint-card">
+          <button class="painpoint-shot" type="button" data-full="nanwang-assets/painpoint-wechat-service.jpg" data-title="南网在线公众号截图"><img src="nanwang-assets/painpoint-wechat-service.jpg" alt="南网在线公众号停更截图" style="--shot-y: 0%;"></button>
+          <div class="painpoint-copy">
+            <small>南网在线公众号</small>
+            <strong>2021 年后停更，服务号没有持续内容承接</strong>
+            <p>早期内容阅读高，但更新中断后，服务品牌在微信内容端失去连续触达，用户难以形成稳定关注。</p>
+          </div>
         </div>
-        <div class="service-node">
-          <div class="node-icon">2</div>
-          <h3>内容平台搜索/评论</h3>
-          <p>用户会先在抖音、小红书搜索攻略，或在评论区追问。</p>
-          <div class="node-tags"><span>搜索</span><span>收藏</span><span>评论</span><span>转发</span></div>
+        <div class="painpoint-card">
+          <button class="painpoint-shot" type="button" data-full="nanwang-assets/painpoint-wechat-50hz.jpg" data-title="南网50Hz 公众号截图"><img src="nanwang-assets/painpoint-wechat-50hz.jpg" alt="南网50Hz公众号阅读数据截图" style="--shot-y: 0%;"></button>
+          <div class="painpoint-copy">
+            <small>南网50Hz 公众号</small>
+            <strong>日常内容阅读约 <b>1000+</b>，传播停留在新闻表达</strong>
+            <p>内容权威，但更多是事件、工程和品牌信息，和普通用户的电费、省电、报修等即时需求连接弱。</p>
+          </div>
         </div>
-        <div class="service-node">
-          <div class="node-icon">3</div>
-          <h3>官方账号回应</h3>
-          <p>官方账号把咨询回应、服务提醒、功能教学前置到用户常用平台。</p>
-          <div class="node-tags"><span>官方解答</span><span>服务提醒</span><span>功能教学</span></div>
+        <div class="painpoint-card">
+          <button class="painpoint-shot" type="button" data-full="nanwang-assets/painpoint-app-news.jpg" data-title="南网在线 APP 资讯截图"><img src="nanwang-assets/painpoint-app-news.jpg" alt="南网在线APP资讯浏览数据截图" style="--shot-y: 0%;"></button>
+          <div class="painpoint-copy">
+            <small>南网在线 APP 资讯</small>
+            <strong>资讯浏览低，APP 内内容难以自然分发</strong>
+            <p>APP 更像办理工具，用户带着明确任务进入；官方资讯如果仍像新闻列表，就很难承担流量入口。</p>
+          </div>
         </div>
-        <div class="service-node">
-          <div class="node-icon">4</div>
-          <h3>APP 深度服务</h3>
-          <p>复杂办理和长期留存回到南网在线 APP，沉淀用户资产。</p>
-          <div class="node-tags"><span>缴费</span><span>发票</span><span>用电分析</span><span>智能提醒</span></div>
+        <div class="painpoint-card">
+          <button class="painpoint-shot" type="button" data-full="nanwang-assets/painpoint-douyin-50hz.jpg" data-title="南网50Hz 抖音截图"><img src="nanwang-assets/painpoint-douyin-50hz.jpg" alt="南网50Hz抖音账号截图" style="--shot-y: 32%;"></button>
+          <div class="painpoint-copy">
+            <small>南网50Hz 抖音</small>
+            <strong>账号有声量，但单条互动不稳定、服务转化弱</strong>
+            <p>抖音内容仍偏品牌传播和员工/工程展示，用户可能看见了，但不一定知道和自己的用电问题有什么关系。</p>
+          </div>
         </div>
       </div>
-      <div class="flow-conclusion">公共服务新媒体化，不是多一个发布渠道，而是把用户服务入口提前到问题发生的地方。</div>
-      <div class="footer"><span>战略背景与核心命题</span><span>02 / 17</span></div>
+      <div class="flow-conclusion">核心判断：现有渠道已经出现失效，难以继续承接南网在线的服务价值。下一步需要新增更贴近用户日常的外部渠道和账号，用抖音、小红书把服务价值讲出来、分发出去、再导回 APP。</div>
+      <div class="footer"><span>第一部分 · 当前痛点</span><span>02 / 17</span></div>
     </section>
 
     <section class="slide" id="slide-3">
-      <div class="section-kicker">03 核心命题</div>
-      <h2>当前缺口不是“有没有 APP”，而是用户是否愿意回到南网在线</h2>
-      <div class="proposition-stage" id="strategyStage">
-        <div class="core-orbit">
-          <div class="core-copy">
-            <span id="strategyEyebrow">核心命题</span>
-            <strong id="strategyCore">用户愿意回到南网在线</strong>
-          </div>
+      <div class="section-kicker">第一部分 · 趋势与解法</div>
+      <h2>选择抖音 + 小红书，用服务型内容完成品牌、流量、转化</h2>
+      <div class="logic-console" id="logicConsole" aria-label="第三页交互逻辑">
+        <div class="goal-orbit" aria-label="核心命题">
+          <div class="goal-orbit-core"><div><span>核心命题</span><strong>双平台服务运营</strong></div></div>
         </div>
-        <div class="strategy-rails" aria-label="三大策略">
-          <div class="strategy-hint">点击切换三种解法</div>
-          <div class="strategy-tabs" role="tablist" aria-label="三大策略">
-            <button class="strategy-tab is-active" style="--tab-a:#005bac;--tab-b:#00a0df;" type="button" data-color-a="#005bac" data-color-b="#00a0df" data-soft="#edf7fd" data-eyebrow="服务前端化" data-core="内容即服务" data-title="服务前端化" data-detail="把问题解答、功能教学、活动入口放到内容平台，让用户在产生疑问时就能遇到官方服务。" data-note="把服务放到问题发生处">服务前端化</button>
-            <button class="strategy-tab" style="--tab-a:#d47a00;--tab-b:#ffca3a;" type="button" data-color-a="#d47a00" data-color-b="#ffca3a" data-soft="#fff7df" data-eyebrow="品牌人格化" data-core="官方也亲近" data-title="品牌人格化" data-detail="用稳定、可亲近的人设降低公共服务距离感，让“南网在线”不只是办理工具，而是用户愿意互动的服务伙伴。" data-note="让官方账号有稳定人格">品牌人格化</button>
-            <button class="strategy-tab" style="--tab-a:#1b8f5a;--tab-b:#64d18a;" type="button" data-color-a="#1b8f5a" data-color-b="#64d18a" data-soft="#effaf3" data-eyebrow="需求洞察化" data-core="用数据反推服务" data-title="需求洞察化" data-detail="用搜索词、评论问题、互动反馈反推选题和服务优化，持续发现用户真正关心的场景。" data-note="用用户反馈驱动运营">需求洞察化</button>
+        <div class="goal-workbench">
+          <div class="goal-workbench-hint">点击查看三大目标怎么落地</div>
+          <div class="logic-tabs" role="tablist" aria-label="三大目标切换">
+            <button class="logic-tab is-active" type="button" data-logic-index="0" role="tab" aria-selected="true"><small>Goal 01</small><strong>品牌</strong></button>
+            <button class="logic-tab" type="button" data-logic-index="1" role="tab" aria-selected="false"><small>Goal 02</small><strong>流量</strong></button>
+            <button class="logic-tab" type="button" data-logic-index="2" role="tab" aria-selected="false"><small>Goal 03</small><strong>转化</strong></button>
           </div>
-          <div class="strategy-panel" aria-live="polite">
-            <h3 id="strategyTitle">服务前端化</h3>
-            <p id="strategyDetail">把问题解答、功能教学、活动入口放到内容平台，让用户在产生疑问时就能遇到官方服务。</p>
-            <span class="panel-note" id="strategyNote">把服务放到问题发生处</span>
+          <div class="logic-stage" id="logicStage" aria-live="polite">
+          <h3 id="logicTitle">品牌：在外部平台建立“会解决问题”的南网在线</h3>
+          <p id="logicBody">抖音负责把服务感带进日常信息流，小红书负责把攻略和经验沉淀成可信内容。两端共同改变用户对南网在线的认知：不只是 APP 工具，而是能解释、提醒、陪伴和解决生活用电问题的服务品牌。</p>
+            <span class="panel-note" id="logicResult">让南网在线先被理解、被需要，再被使用</span>
           </div>
         </div>
       </div>
-      <div class="conversion-path" aria-label="转化路径">
-        <span>内容触达</span><b>→</b><span>兴趣激发</span><b>→</b><span>APP 体验</span><b>→</b><span>长期留存</span>
+      <div class="why-stack" aria-label="选择双平台的三个为什么">
+        <div class="why-point"><strong>为什么做抖音</strong><p>短视频仍是高频入口，适合把停电提醒、用电科普、直播切片、短剧和福利活动做成用户愿意看的即时内容。</p></div>
+        <div class="why-point"><strong>为什么做小红书</strong><p>用户会主动搜索电费、省电、充电桩、发票等具体问题，适合沉淀攻略型、可收藏、可长期被搜索的内容资产。</p></div>
+        <div class="why-point"><strong>为什么做服务内容</strong><p>外部平台先完成理解、种草和互动，关键办理再回到南网在线 APP，形成品牌、流量、转化的闭环。</p></div>
       </div>
-      <div class="footer"><span>战略背景与核心命题</span><span>03 / 17</span></div>
+      <div class="footer"><span>第一部分 · 市场趋势与解决方向</span><span>03 / 17</span></div>
     </section>
 
     <section class="slide compact-slide" id="slide-4">
-      <div class="section-kicker">02 行业对标</div>
-      <h2>央企账号已经入场，但多数还没有真正转向“服务型”</h2>
-      <p class="compact-lead">对标账号普遍完成了抖音官方入驻，但内容仍停留在新闻传播、品牌内宣或不稳定玩梗；小红书基本未形成系统运营，相关账号鱼龙混杂。</p>
+      <div class="section-kicker">第二部分 · 对标分析</div>
+      <h2><span class="highlight-text">抖音</span>对标账号已经入场，但问题仍集中在“有传播、弱服务”</h2>
+      <p class="compact-lead">我们看对标不是为了复制账号风格，而是判断问题在哪里：大多数账号能做发布和包装，但还没有把用户真实问题做成稳定栏目、搜索资产和服务转化入口。</p>
       <div class="benchmark-switcher">
         <div class="benchmark-tabs" role="tablist" aria-label="央企账号切换">
-          <button class="benchmark-tab is-active" type="button" data-title="国家能源集团" data-tag="有包装" data-shot="nanwang-assets/benchmark-china-energy.jpg" data-surface="封面体系较完整，漫画化、栏目化包装明显，看起来具备平台表达意识。" data-problem="点进内容后仍偏新闻传播，用户预期与内容体验错位，互动数据不稳定。" data-summary="有包装，但内容仍偏新闻" data-summary2="抖音">国家能源集团</button>
+          <button class="benchmark-tab is-warm is-active" type="button" data-title="南网50Hz" data-tag="偏内宣" data-shot="nanwang-assets/benchmark-csg-50hz.jpg" data-surface="官方身份清晰，但主页装修、栏目组织和视觉统一度不足。" data-problem="内容更像面向内部员工和品牌宣传，和普通用电用户的日常问题关联较弱。" data-summary="基础装修不足" data-summary2="偏内宣">南网50Hz</button>
+          <button class="benchmark-tab" type="button" data-title="国家能源集团" data-tag="有包装" data-shot="nanwang-assets/benchmark-china-energy.jpg" data-surface="封面体系较完整，漫画化、栏目化包装明显，看起来具备平台表达意识。" data-problem="点进内容后仍偏新闻传播，用户预期与内容体验错位，互动数据不稳定。" data-summary="有包装，但内容仍偏新闻" data-summary2="抖音">国家能源集团</button>
           <button class="benchmark-tab" type="button" data-title="国家电网" data-tag="有爆点" data-shot="nanwang-assets/benchmark-state-grid.jpg" data-surface="具备网感和爆款能力，能够把部分内容推到用户面前。" data-problem="新闻联播式内容与玩梗内容交替出现，缺少稳定人设，用户看得到但难沉淀。" data-summary="有网感和爆点" data-summary2="缺少人设">国家电网</button>
-          <button class="benchmark-tab is-warm" type="button" data-title="南网50Hz" data-tag="偏内宣" data-shot="nanwang-assets/benchmark-csg-50hz.jpg" data-surface="官方身份清晰，但主页装修、栏目组织和视觉统一度不足。" data-problem="内容更像面向内部员工和品牌宣传，和普通用电用户的日常问题关联较弱。" data-summary="基础装修不足" data-summary2="偏内宣">南网50Hz</button>
         </div>
         <div class="benchmark-stage" aria-live="polite">
-          <div class="benchmark-shot"><img id="benchmarkShot" src="nanwang-assets/benchmark-china-energy.jpg" alt="国家能源集团抖音账号截图"></div>
+          <div class="benchmark-shot"><img id="benchmarkShot" src="nanwang-assets/benchmark-csg-50hz.jpg" alt="南网50Hz抖音账号截图"></div>
           <div class="benchmark-diagnosis">
             <div class="diag-block">
               <h4>表面表现</h4>
-              <p id="benchmarkTitle">封面体系较完整，漫画化、栏目化包装明显，看起来具备平台表达意识。</p>
+              <p id="benchmarkTitle">官方身份清晰，但主页装修、栏目组织和视觉统一度不足。</p>
             </div>
             <div class="diag-block">
               <h4>核心问题</h4>
-              <p id="benchmarkProblem">封面体系精致、视觉有网感，但内容点进去仍偏新闻传播，用户预期与内容体验错位，互动数据不稳定。</p>
+              <p id="benchmarkProblem">内容更像面向内部员工和品牌宣传，和普通用电用户的日常问题关联较弱。</p>
             </div>
             <div class="diag-block">
-              <h4>对南网在线的启示</h4>
-              <p>这些账号说明“开通平台”不是难点，难点是从传播型转向服务型。社交平台用户关注的不是新闻有多全，而是内容有没有用、有没有趣。</p>
+              <h4>我们准备怎么做</h4>
+              <p>南网在线不和 50Hz 抢权威发布，而是补齐用户日常服务内容：抖音做即时触达和服务回应，小红书做搜索攻略和长期沉淀，最终把用户带回 APP。</p>
             </div>
             <div class="benchmark-summary">
-              <p>结论：多数央企账号仍是传播型，不是真正的服务型；小红书基本没有形成系统运营，相关账号鱼龙混杂。</p>
-              <div class="summary-tags"><span id="benchmarkSummary1">有包装，但内容仍偏新闻</span><span id="benchmarkSummary2">抖音</span></div>
+              <p>结论：对标账号的空位不在“有没有账号”，而在“有没有持续解决用户问题的内容系统”。南网在线应直接切入服务型、生活化、可转化内容。</p>
+              <div class="summary-tags"><span id="benchmarkSummary1">基础装修不足</span><span id="benchmarkSummary2">偏内宣</span></div>
             </div>
           </div>
         </div>
       </div>
-      <div class="footer"><span>央企平台开通与运营情况分析</span><span>04 / 17</span></div>
+      <div class="footer"><span>第二部分 · 对标账号怎么做、问题在哪里、我们怎么做</span><span>04 / 17</span></div>
     </section>
 
     <section class="slide" id="slide-5">
-      <div class="section-kicker">04 双平台差异化定位</div>
-      <h2>不是内容搬运，而是把平台能力放到正确位置</h2>
-      <p class="lead">点击左侧策略轴，展示同一运营目标下，抖音与小红书分别承担的角色。</p>
+      <div class="section-kicker">第二部分 · 小红书对标分析</div>
+      <h2><span class="highlight-text">小红书</span>还不是电力公共服务运营主流，但已经出现搜索入口机会</h2>
+      <p class="compact-lead">从搜索结果看，电力央企和南网相关内容在小红书上仍处于早期状态：官方账号少、同名账号混杂、内容资产薄弱，说明竞争不充分，也说明更需要用服务型内容抢占搜索心智。</p>
+      <div class="xhs-benchmark-layout">
+        <div class="xhs-evidence-grid" aria-label="小红书搜索截图证据">
+          <div class="xhs-evidence-card"><img src="nanwang-assets/xhs-benchmark-csg-search.jpg" alt="小红书搜索南方电网截图"><span>南方电网：相关账号分散，粉丝基础弱</span></div>
+          <div class="xhs-evidence-card"><img src="nanwang-assets/xhs-benchmark-nanwang-mixed.jpg" alt="小红书搜索南网截图"><span>南网：同名账号混杂，识别度不足</span></div>
+          <div class="xhs-evidence-card"><img src="nanwang-assets/xhs-benchmark-china-energy.jpg" alt="小红书搜索国家能源截图"><span>国家能源：官方账号存在，但运营声量有限</span></div>
+          <div class="xhs-evidence-card"><img src="nanwang-assets/xhs-benchmark-state-grid.jpg" alt="小红书搜索国家电网截图"><span>国家电网：账号稀少，搜索结果单薄</span></div>
+        </div>
+        <div class="xhs-analysis-panel">
+          <div class="xhs-analysis-item">
+            <small>现状判断</small>
+            <strong>小红书不是电力央企运营主阵地</strong>
+            <p>对标账号粉丝量和内容规模都不高，平台上还没有形成成熟的电力服务内容供给。</p>
+          </div>
+          <div class="xhs-analysis-item">
+            <small>南网问题</small>
+            <strong>相关账号鱼龙混杂，官方服务识别弱</strong>
+            <p>用户搜索“南方电网”“南网”时，会看到大量低粉、同名或非官方账号，难以快速识别可信服务入口。</p>
+          </div>
+          <div class="xhs-analysis-item">
+            <small>对标问题</small>
+            <strong>其他账号也没有把搜索价值做出来</strong>
+            <p>国家能源、国家电网等账号即使有认证，也多停留在账号存在层面，缺少可搜索、可收藏、可解决问题的内容矩阵。</p>
+          </div>
+          <div class="xhs-analysis-conclusion">
+            <strong>结论：这不是红海，而是服务内容占位窗口</strong>
+            <p>南网在线可以率先把电费、省电、充电桩、发票、户号绑定等高频问题做成小红书攻略资产，建立“搜电力问题就能找到南网在线”的服务认知。</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer"><span>第二部分 · 小红书搜索现状与机会</span><span>05 / 17</span></div>
+    </section>
+
+    <section class="slide" id="slide-6">
+      <div class="section-kicker">第三部分 · 总体计划</div>
+      <h2>围绕品牌、流量、转化三大目标，给抖音和小红书不同任务</h2>
+      <p class="lead">点击左侧目标轴，展示同一目标下两个平台分别承担的角色。</p>
       <div class="platform-dashboard" id="platformDashboard">
         <div class="strategy-rail" aria-label="双平台策略阶段">
           <button class="phase-tab is-active" style="--phase-tab-a:#005bac;--phase-tab-b:#00a0df;" type="button" data-phase="reach" data-color-a="#005bac" data-color-b="#00a0df" data-soft="#edf7fd"
@@ -4599,12 +5534,12 @@
           <div class="dashboard-result"><b>分工结论</b><span id="dashboardResult">抖音负责把服务推到用户面前，小红书负责接住用户主动搜索。</span></div>
         </div>
       </div>
-      <div class="footer"><span>双平台差异化定位</span><span>05 / 17</span></div>
+      <div class="footer"><span>第三部分 · 平台分工与目标</span><span>06 / 17</span></div>
     </section>
 
-    <section class="slide" id="slide-6">
-      <div class="section-kicker">05 账号人设</div>
-      <h2>同一品牌，不同平台使用不同“说话方式”</h2>
+    <section class="slide" id="slide-7">
+      <div class="section-kicker">第三部分 · 品牌打法</div>
+      <h2>先把南网在线做成有识别度的服务品牌，再承接后续流量和转化</h2>
       <div class="voice-system">
         <div class="voice-card douyin">
           <div class="voice-top">
@@ -4615,19 +5550,19 @@
             </div>
           </div>
           <div class="voice-main">
-            <button class="ip-preview" type="button" data-full="nanwang-assets/ip-electric-brother.png" data-title="电力小哥 IP 形象">
-              <img src="nanwang-assets/ip-electric-brother.png" alt="电力小哥 IP 形象参考">
+            <button class="ip-preview" type="button" data-full="nanwang-assets/ip-nanwang-xiaohezi.png" data-title="南网小赫兹 IP 形象">
+              <img src="nanwang-assets/ip-nanwang-xiaohezi.png" alt="南网小赫兹 IP 形象参考">
               <span class="ip-label">IP形象仅供参考</span>
               <span class="ip-zoom-hint">点击看完整图</span>
             </button>
             <div class="voice-copy">
-              <div class="voice-promise"><span>账号承诺</span><b>用电有问题，找南网在线就对了。</b></div>
+              <div class="voice-promise"><span>账号承诺</span><b>重要用电服务，南网在线主动推到你面前。</b></div>
               <div class="voice-tags" aria-label="抖音账号风格">
-                <span>真实</span><span>有速度</span><span>有温度</span><span>实用</span><span>竖屏短视频</span>
+                <span>主动推送</span><span>即时提醒</span><span>强触达</span><span>有速度</span><span>竖屏短视频</span>
               </div>
               <div class="voice-bottom">
-                <div class="voice-note"><strong>内容表达</strong><p>用真人、现场、评论回应，把服务做成用户愿意看完的短内容。</p></div>
-                <div class="voice-note"><strong>核心指标</strong><p>播放量、完播率、涨粉数、直播场观、评论互动。</p></div>
+                <div class="voice-note"><strong>内容表达</strong><p>把停电提醒、缴费福利、服务节点和高频问题做成短视频，主动进入用户信息流。</p></div>
+                <div class="voice-note"><strong>核心指标</strong><p>播放量、完播率、触达人数、直播场观、评论互动。</p></div>
               </div>
             </div>
           </div>
@@ -4641,30 +5576,30 @@
             </div>
           </div>
           <div class="voice-main">
-            <button class="ip-preview" type="button" data-full="nanwang-assets/ip-xiaozhidian.png" data-title="小知电 IP 形象">
-              <img src="nanwang-assets/ip-xiaozhidian.png" alt="小知电 IP 形象参考">
+            <button class="ip-preview" type="button" data-full="nanwang-assets/ip-green-xiaohezi.png" data-title="小赫兹 IP 形象">
+              <img src="nanwang-assets/ip-green-xiaohezi.png" alt="小赫兹 IP 形象参考">
               <span class="ip-label">IP形象仅供参考</span>
               <span class="ip-zoom-hint">点击看完整图</span>
             </button>
             <div class="voice-copy">
-              <div class="voice-promise"><span>账号承诺</span><b>让每一度电都过得精致又省心。</b></div>
+              <div class="voice-promise"><span>账号承诺</span><b>用电有问题，一搜就有南网在线的答案。</b></div>
               <div class="voice-tags" aria-label="小红书账号风格">
-                <span>温暖</span><span>精致</span><span>有美感</span><span>可收藏</span><span>重视 SEO</span>
+                <span>搜索解答</span><span>攻略清单</span><span>可收藏</span><span>重视 SEO</span><span>长期沉淀</span>
               </div>
               <div class="voice-bottom">
-                <div class="voice-note"><strong>内容表达</strong><p>用图文笔记和生活场景，把用电服务变成可收藏的攻略。</p></div>
-                <div class="voice-note"><strong>核心指标</strong><p>收藏率、搜索排名、互动率、种草转化率。</p></div>
+                <div class="voice-note"><strong>内容表达</strong><p>围绕电费、省电、发票、充电桩等搜索问题，做成步骤清楚的图文答案。</p></div>
+                <div class="voice-note"><strong>核心指标</strong><p>搜索排名、收藏率、笔记点击率、互动率、APP 回流。</p></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="footer"><span>账号人设与表达系统</span><span>06 / 17</span></div>
+      <div class="footer"><span>第三部分 · 品牌栏目与账号表达</span><span>07 / 17</span></div>
     </section>
 
-    <section class="slide" id="slide-7">
-      <div class="section-kicker">06 矩阵协同</div>
-      <h2>50Hz 出权威，南网在线出温度；50Hz 做传播，南网在线做转化</h2>
+    <section class="slide" id="slide-8">
+      <div class="section-kicker">第三部分 · 账号协同</div>
+      <h2>50Hz 出权威，南网在线出服务；50Hz 做传播，南网在线做转化</h2>
       <div class="synergy-map" aria-label="账号矩阵协同关系">
         <div class="synergy-node authority">
           <div class="synergy-label">权威传播</div>
@@ -4691,12 +5626,12 @@
         <div class="principle"><b>不重叠</b><p>50Hz 负责宏观与权威，南网在线补齐用户日常用电服务和生活化内容。</p></div>
         <div class="principle"><b>可互导</b><p>外部平台承接兴趣和需求，关键服务、福利和办理回到 APP 完成。</p></div>
       </div>
-      <div class="footer"><span>账号体系与矩阵协同</span><span>07 / 17</span></div>
+      <div class="footer"><span>第三部分 · 账号体系协同</span><span>08 / 17</span></div>
     </section>
 
-    <section class="slide" id="slide-8">
-      <div class="section-kicker">07 抖音内容矩阵</div>
-      <h2>围绕“有用、有趣、有温度”，建立纯短视频栏目体系</h2>
+    <section class="slide" id="slide-9">
+      <div class="section-kicker">第三部分 · 抖音品牌栏目</div>
+      <h2>抖音负责“被看见、被互动、被带动”，建立强触达短视频栏目体系</h2>
       <div class="column-carousel" aria-label="抖音栏目横向滑动">
         <div class="column-track">
           <button class="column-item is-active" type="button" data-column-index="0" data-target-topic="yidudian">
@@ -4705,37 +5640,32 @@
             <p>以“一度电能做什么”为创意原点，延展生活实验、能源科普、新能源和情感故事。</p>
             <span class="column-action">点击进入具体规划</span>
           </button>
-          <button class="column-item" type="button" data-column-index="1" data-target-topic="repair">
-            <span class="column-index">02 一线现场</span>
-            <strong>抢修现场</strong>
-            <p>基于真实抢修素材做故事化包装，呈现电力人的速度、专业和温度。</p>
-            <span class="column-action">点击进入具体规划</span>
-          </button>
-          <button class="column-item" type="button" data-column-index="2" data-target-topic="pitfall">
-            <span class="column-index">03 高频答疑</span>
+          <button class="column-item" type="button" data-column-index="1" data-target-topic="pitfall">
+            <span class="column-index">02 高频答疑</span>
             <strong>用电避坑指南</strong>
             <p>阶梯电价、安全用电、电费异常排查，用短剧或口播降低理解门槛。</p>
             <span class="column-action">点击进入具体规划</span>
           </button>
-          <button class="column-item" type="button" data-column-index="3" data-target-topic="benefit">
-            <span class="column-index">04 活动转化</span>
+          <button class="column-item" type="button" data-column-index="2" data-target-topic="benefit">
+            <span class="column-index">03 活动转化</span>
             <strong>南网好福利</strong>
             <p>APP 专属活动、积分兑换、直播福利，用 15-30 秒快节奏呈现。</p>
             <span class="column-action">点击进入具体规划</span>
           </button>
-          <button class="column-item" type="button" data-column-index="4" data-target-topic="diary">
-            <span class="column-index">05 人情味</span>
-            <strong>班组日记</strong>
-            <p>基层员工第一人称 Vlog，补足品牌的人情味与真实服务现场。</p>
-            <span class="column-action">点击进入具体规划</span>
-          </button>
-          <button class="column-item" type="button" data-column-index="5">
-            <span class="column-index">06 直播资产</span>
+          <button class="column-item" type="button" data-column-index="3" data-target-topic="liveclip">
+            <span class="column-index">04 直播资产</span>
             <strong>直播精华切片</strong>
             <p>直播后提取高光片段二次传播，为下场直播蓄水预热。</p>
+            <span class="column-action">点击进入具体规划</span>
           </button>
-          <button class="column-item" type="button" data-column-index="6" data-target-topic="freshnews">
-            <span class="column-index">07 月度供稿</span>
+          <button class="column-item" type="button" data-column-index="4" data-target-topic="drama">
+            <span class="column-index">05 短剧栏目</span>
+            <strong>南网小剧场</strong>
+            <p>以电力小哥为固定主角，每集一个暖心小故事，把用电服务讲得更亲近。</p>
+            <span class="column-action">点击进入具体规划</span>
+          </button>
+          <button class="column-item" type="button" data-column-index="5" data-target-topic="freshnews">
+            <span class="column-index">06 月度供稿</span>
             <strong>南网新鲜事</strong>
             <p>由子公司每月提报 1 次新鲜素材，包装成城市电网、服务升级和一线变化短视频。</p>
             <span class="column-action">点击进入具体规划</span>
@@ -4747,31 +5677,28 @@
           <button type="button" id="columnNext" aria-label="下一个栏目">›</button>
         </div>
       </div>
-      <div class="footer"><span>抖音内容矩阵</span><span>08 / 17</span></div>
+      <div class="footer"><span>第三部分 · 抖音栏目规划</span><span>09 / 17</span></div>
     </section>
 
-    <section class="slide" id="slide-9">
-      <div class="section-kicker">08 小红书内容矩阵</div>
+    <section class="slide" id="slide-10">
+      <div class="section-kicker">第三部分 · 小红书品牌栏目</div>
       <h2 class="xhs-headline"><span>围绕“省钱、省心、绿色生活”，</span><span>做可搜索、可收藏、可种草的内容资产</span></h2>
       <div class="xhs-console" aria-label="小红书栏目点击切换">
-        <div class="xhs-tab-list" role="tablist" aria-label="小红书六个栏目">
+        <div class="xhs-tab-list" role="tablist" aria-label="小红书五个栏目">
           <button class="xhs-tab is-active" type="button" role="tab" aria-selected="true" data-xhs-index="0">
             <small>01</small><strong>我家的省电美学</strong>
           </button>
           <button class="xhs-tab" type="button" role="tab" aria-selected="false" data-xhs-index="1">
-            <small>02</small><strong>电费攻略</strong>
+            <small>02</small><strong>充电桩生活</strong>
           </button>
           <button class="xhs-tab" type="button" role="tab" aria-selected="false" data-xhs-index="2">
-            <small>03</small><strong>充电桩生活</strong>
+            <small>03</small><strong>低碳好物</strong>
           </button>
           <button class="xhs-tab" type="button" role="tab" aria-selected="false" data-xhs-index="3">
             <small>04</small><strong>万家灯火</strong>
           </button>
           <button class="xhs-tab" type="button" role="tab" aria-selected="false" data-xhs-index="4">
-            <small>05</small><strong>低碳好物</strong>
-          </button>
-          <button class="xhs-tab" type="button" role="tab" aria-selected="false" data-xhs-index="5">
-            <small>06</small><strong>南网在线玩转指南</strong>
+            <small>05</small><strong>南网在线玩转指南</strong>
           </button>
         </div>
         <div class="xhs-detail" role="tabpanel" aria-live="polite">
@@ -4812,132 +5739,89 @@
           </div>
         </div>
       </div>
-      <div class="footer"><span>小红书内容矩阵</span><span>09 / 17</span></div>
-    </section>
-
-    <section class="slide ops-slide" id="slide-10">
-      <div class="section-kicker">09 月度内容日历</div>
-      <div class="ops-topline">
-        <h2>把一个月拆成“启动、预热、放大、复盘”四个运营节拍</h2>
-        <div class="ops-meta"><span>点击周次切换</span><span>双平台并行</span><span>节点灵活加更</span></div>
-      </div>
-      <div class="calendar-board">
-        <div class="week-switch" role="tablist" aria-label="月度内容节奏切换">
-          <button class="week-tab is-active" type="button" role="tab" aria-selected="true" data-week-index="0">
-            <small>Week 01</small><strong>基础声量启动</strong>
-          </button>
-          <button class="week-tab" type="button" role="tab" aria-selected="false" data-week-index="1">
-            <small>Week 02</small><strong>功能种草预热</strong>
-          </button>
-          <button class="week-tab" type="button" role="tab" aria-selected="false" data-week-index="2">
-            <small>Week 03</small><strong>直播节点放大</strong>
-          </button>
-          <button class="week-tab" type="button" role="tab" aria-selected="false" data-week-index="3">
-            <small>Week 04</small><strong>数据复盘迭代</strong>
-          </button>
-        </div>
-        <div class="calendar-stage" id="calendarStage">
-          <div class="calendar-main">
-            <div>
-              <span class="calendar-label" id="calendarLabel">第 1 周 · 启动</span>
-              <h3 id="calendarTitle">先用高频问题打开账号可用感</h3>
-              <p id="calendarIntro">首周不追求复杂叙事，优先用“看得懂、搜得到、能收藏”的内容建立账号基本认知。</p>
-              <div class="platform-lanes">
-                <div class="lane"><b>抖音动作</b><ul id="calendarDouyin"><li>用电避坑指南</li><li>一度电 IP</li><li>热点快评 / 节气内容</li></ul></div>
-                <div class="lane"><b>小红书动作</b><ul id="calendarXhs"><li>电费攻略</li><li>低碳好物</li><li>我家的省电美学</li></ul></div>
-              </div>
-            </div>
-            <div class="calendar-legend" id="calendarLegend"><span>目标：建立搜索资产</span><span>加更：节点话题</span><span>复盘：收藏率</span></div>
-          </div>
-          <div class="calendar-side">
-            <div class="rhythm-card"><span class="rhythm-number" id="calendarDyCount">4-5</span><strong>抖音 / 周</strong><p id="calendarDyNote">用视频承担声量、热度和事件响应。</p></div>
-            <div class="rhythm-card"><span class="rhythm-number" id="calendarXhsCount">5-7</span><strong>小红书 / 周</strong><p id="calendarXhsNote">用图文与短视频沉淀搜索和收藏。</p></div>
-            <div class="rhythm-card"><span class="rhythm-number" id="calendarReview">1次</span><strong>周复盘</strong><p id="calendarReviewNote">每周调整选题优先级，月末沉淀爆款方法。</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="footer"><span>内容日历框架</span><span>10 / 17</span></div>
+      <div class="footer"><span>第三部分 · 小红书栏目规划</span><span>10 / 17</span></div>
     </section>
 
     <section class="slide ops-slide" id="slide-11">
-      <div class="section-kicker">10 投流策略</div>
+      <div class="section-kicker">第三部分 · 流量层面动作</div>
       <div class="ops-topline">
-        <h2>不是平均撒钱，而是把已经跑出来的内容放大</h2>
-        <div class="ops-meta"><span>自然流量先验证</span><span>24h 内追投</span><span>搜索词长期占位</span></div>
+        <h2>内容节奏和流量投放相辅相成：内容负责跑出信号，投放负责放大有效内容</h2>
+        <div class="ops-meta"><span>内容先给素材池</span><span>自然数据先验证</span><span>投放滚动加码</span></div>
       </div>
-      <div class="boost-board">
-        <div class="boost-tabs" role="tablist" aria-label="投流策略切换">
-          <button class="boost-tab is-active" type="button" role="tab" aria-selected="true" data-boost-index="0"><small>Douyin</small><strong>日常爆款加热</strong></button>
-          <button class="boost-tab" type="button" role="tab" aria-selected="false" data-boost-index="1"><small>Live</small><strong>618 直播投流</strong></button>
-          <button class="boost-tab" type="button" role="tab" aria-selected="false" data-boost-index="2"><small>XHS</small><strong>笔记搜索放大</strong></button>
-          <button class="boost-tab" type="button" role="tab" aria-selected="false" data-boost-index="3"><small>Search</small><strong>高意图词占位</strong></button>
-        </div>
-        <div class="boost-stage" id="boostStage">
-          <div class="boost-main">
-            <span class="boost-label" id="boostLabel">抖音 DOU+ · 1-2 万/月</span>
-            <h3 id="boostTitle">自然流量先跑，24 小时内追投</h3>
-            <p id="boostIntro">筛选完播率、点赞率、评论率表现突出的短视频，用小额快投验证，再把服务入口和直播预约挂链放大。</p>
-            <div class="boost-path" id="boostPath">
-              <div class="boost-node"><b>01 发现</b><span>自然流量出现高完播内容</span></div>
-              <div class="boost-node"><b>02 判断</b><span>完播率 >30%，点赞率 >3%</span></div>
-              <div class="boost-node"><b>03 加热</b><span>单条 500-2000 元追投</span></div>
-              <div class="boost-node"><b>04 回收</b><span>沉淀挂链点击与互动人群</span></div>
+      <div class="traffic-board">
+        <div class="traffic-rhythm">
+          <div>
+            <small>内容节奏 · 投放基础</small>
+            <strong>先用稳定内容供给形成素材池，再用投放把好内容推到更多目标人群</strong>
+            <p>内容节奏决定“有什么可以投”，流量投放决定“哪些内容值得被更多人看见”。日常保持抖音短视频、小红书图文/短视频稳定发布；遇到 618、缴费节点、用电高峰、公益活动等节点加更；每周根据自然数据决定下一轮投放优先级。</p>
+            <div class="traffic-calendar">
+              <span><b>日常内容</b>持续产出服务教程、栏目内容和公益故事，为投放提供可测试素材。</span>
+              <span><b>节点内容</b>直播、福利、用电高峰、公益活动集中加更，形成阶段性流量抓手。</span>
+              <span><b>周复盘</b>用完播、收藏、评论质量、点击表现反推下一轮内容和预算分配。</span>
             </div>
           </div>
-          <div class="budget-panel">
-            <strong>月度预算参考</strong>
-            <div class="budget-amount" id="boostBudget">1-2万</div>
-            <p id="boostNote">适合用作日常内容加热池，不替代优质选题本身。</p>
-            <div class="budget-bars" id="boostBars">
-              <div class="budget-bar"><span>内容测试</span><span style="--w: 42%"></span></div>
-              <div class="budget-bar"><span>精准放大</span><span style="--w: 70%"></span></div>
-              <div class="budget-bar"><span>转化承接</span><span style="--w: 52%"></span></div>
-            </div>
+          <div class="traffic-kpi"><span>内容提供素材池</span><span>投放放大有效内容</span></div>
+        </div>
+        <div class="traffic-platform">
+          <small>Douyin · 声量与即时转化</small>
+          <h3>抖音：用 DOU+ / 千川逻辑放大跑出来的视频和直播节点</h3>
+          <p class="traffic-intro">抖音侧先用自然流量筛内容，再把预算集中给完播、互动和服务点击更好的素材。目标不是单纯买播放，而是把声量带到直播预约、APP 功能入口和评论咨询。</p>
+          <div class="traffic-actions">
+            <div class="traffic-action"><i>01</i><div><b>日常短视频小额快测</b><span>每条先自然跑 6-24 小时，筛选完播率、点赞率、评论质量靠前的内容，单条 300-1000 元测试加热，优先测“一度电 IP”“用电避坑”“南网好福利”。</span></div></div>
+            <div class="traffic-action"><i>02</i><div><b>高表现素材二次放大</b><span>测试后保留成本低、互动好的素材，追加到 1000-3000 元级别，并改封面、标题、评论置顶，把用户引向直播预约、福利入口或南网在线 APP 功能。</span></div></div>
+            <div class="traffic-action"><i>03</i><div><b>直播前中后分段投放</b><span>直播前 3-5 天投预约预热视频；开播前 2 小时集中拉进入；直播后 48 小时投高光切片，把福利讲解、功能演示和高频问答继续分发。</span></div></div>
+            <div class="traffic-action"><i>04</i><div><b>评论人群再运营</b><span>把评论区出现的“电费、发票、充电桩、报修、福利怎么领”等问题整理成再创作选题，下一轮内容和投流优先覆盖这些真实需求。</span></div></div>
           </div>
+          <div class="traffic-kpi"><span>核心指标：完播率</span><span>互动成本</span><span>直播预约</span><span>APP 点击</span></div>
+        </div>
+        <div class="traffic-platform">
+          <small>Xiaohongshu · 搜索资产与长尾转化</small>
+          <h3>小红书：用薯条 / 聚光放大可收藏笔记，占住高意图搜索词</h3>
+          <p class="traffic-intro">小红书侧重点不是短期爆量，而是让“南网在线 + 服务需求”长期可被搜到。优先投收藏率高、评论问题明确、封面信息清楚的笔记，形成搜索占位。</p>
+          <div class="traffic-actions">
+            <div class="traffic-action"><i>01</i><div><b>笔记先按关键词分组</b><span>分成低碳好物、充电桩生活、南网在线指南、万家灯火公益四组，每组绑定关键词包，如“充电桩安装”“电子发票”“查电量”“公益志愿服务”。</span></div></div>
+            <div class="traffic-action"><i>02</i><div><b>收藏型内容优先加热</b><span>发布 24-48 小时后筛选收藏率、停留和评论问题。收藏率高的教程、清单、流程图进入薯条测试，单篇 200-800 元起投，先验证关键词和封面。</span></div></div>
+            <div class="traffic-action"><i>03</i><div><b>聚光做搜索词占位</b><span>对“南方电网缴费、南网在线发票、充电桩怎么申请、用电量怎么查”等高意图词做持续投放，让用户主动搜索时看到官方内容和服务入口。</span></div></div>
+            <div class="traffic-action"><i>04</i><div><b>爆款笔记做矩阵复用</b><span>高表现笔记不只追加预算，还要拆成同主题不同封面、不同人群版本，例如租房党、车主、家庭用户、年轻独居人群，延长搜索生命周期。</span></div></div>
+          </div>
+          <div class="traffic-kpi"><span>核心指标：收藏率</span><span>搜索排名</span><span>评论需求</span><span>主页/APP 跳转</span></div>
         </div>
       </div>
-      <div class="footer"><span>投流策略</span><span>11 / 17</span></div>
+      <div class="footer"><span>第三部分 · 内容节奏与流量投放</span><span>11 / 17</span></div>
     </section>
 
     <section class="slide ops-slide" id="slide-12">
-      <div class="section-kicker">11 APP引流闭环</div>
+      <div class="section-kicker">第三部分 · 转化链路</div>
       <div class="ops-topline">
-        <h2>每条内容都要有一个回到 APP 的服务理由</h2>
+        <h2>转化不是“跳转下载”，而是让用户一步步完成服务体验</h2>
         <div class="ops-meta"><span>内容触达</span><span>功能体验</span><span>留存复访</span></div>
       </div>
-      <div class="route-board">
-        <div class="route-tabs" role="tablist" aria-label="APP 引流机制切换">
-          <button class="route-tab is-active" type="button" role="tab" aria-selected="true" data-route-index="0"><small>Route 01</small><strong>内容植入</strong></button>
-          <button class="route-tab" type="button" role="tab" aria-selected="false" data-route-index="1"><small>Route 02</small><strong>福利驱动</strong></button>
-          <button class="route-tab" type="button" role="tab" aria-selected="false" data-route-index="2"><small>Route 03</small><strong>服务牵引</strong></button>
-          <button class="route-tab" type="button" role="tab" aria-selected="false" data-route-index="3"><small>Route 04</small><strong>复访留存</strong></button>
+      <div class="product-flow-panel">
+        <div class="product-step">
+          <div class="icon">1</div>
+          <h3>内容种草</h3>
+          <p>抖音用短视频、直播和评论回应制造第一触达；小红书用攻略、清单和生活场景承接用户主动搜索。</p>
+          <div class="step-tags"><span>播放</span><span>搜索</span><span>收藏</span><span>评论</span></div>
         </div>
-        <div class="route-stage" id="routeStage">
-          <div class="route-main">
-            <span class="route-label" id="routeLabel">内容植入 · 不做硬广</span>
-            <h3 id="routeTitle">在实用内容结尾，给用户一个继续使用的理由</h3>
-            <p id="routeIntro">电费攻略、发票教程、充电桩办理、低碳好物都可以自然承接到 APP 的具体功能，而不是突然跳转下载。</p>
-            <div class="conversion-ring" id="routeSteps">
-              <div class="ring-step"><b>触达</b><span>短视频和搜索笔记解决具体问题</span></div>
-              <div class="ring-step"><b>兴趣</b><span>用户看到省钱、省心或福利价值</span></div>
-              <div class="ring-step"><b>体验</b><span>引导完成缴费、发票、用电分析</span></div>
-              <div class="ring-step"><b>留存</b><span>用提醒、积分和复访权益建立关系</span></div>
-            </div>
-          </div>
-          <div class="app-phone" aria-label="APP 引流示意">
-            <div class="app-screen">
-              <div class="app-banner"><small id="appMini">南网在线 APP</small><strong id="appScreenTitle">用电服务入口</strong></div>
-              <div class="app-actions" id="appActions"><span>一键缴费</span><span>电子发票</span><span>用电分析</span><span>智能提醒</span></div>
-              <div class="app-result" id="appResult">内容不是终点，服务体验才是转化闭环。</div>
-            </div>
-          </div>
+        <div class="product-step">
+          <div class="icon">2</div>
+          <h3>服务牵引</h3>
+          <p>每条内容绑定一个具体服务理由：电费异常查账单、开电子发票、充电桩办理、福利领取、用电分析。</p>
+          <div class="step-tags"><span>功能教程</span><span>福利入口</span><span>直播预约</span><span>活动承接</span></div>
+        </div>
+        <div class="product-step">
+          <div class="icon">3</div>
+          <h3>APP 留存</h3>
+          <p>用户回到南网在线 APP 完成绑定户号、缴费、发票、报修和提醒设置，再通过权益、账单和内容复访沉淀长期关系。</p>
+          <div class="step-tags"><span>户号绑定</span><span>服务办理</span><span>智能提醒</span><span>复访权益</span></div>
         </div>
       </div>
-      <div class="footer"><span>APP引流闭环</span><span>12 / 17</span></div>
+      <div class="flow-conclusion">转化链路：抖音种草与直播激发即时行动，小红书沉淀高意图搜索，所有服务动作最终回到南网在线 APP 完成。</div>
+      <div class="footer"><span>第三部分 · APP 转化闭环</span><span>12 / 17</span></div>
     </section>
 
     <section class="slide" id="slide-13">
-      <div class="section-kicker">12 实施路径</div>
+      <div class="section-kicker">第三部分 · 实施路径</div>
       <h2>先完成冷启动突破，再进入稳定增长与深度运营</h2>
       <div class="timeline">
         <div class="phase"><div class="time">第1个月 · 筹备期</div><h3>账号上线</h3><p>账号注册认证、VI设计、制度建立、团队组建、首批内容库储备。</p></div>
@@ -4945,77 +5829,14 @@
         <div class="phase"><div class="time">第3-8个月 · 成长爬坡期</div><h3>爆款复制</h3><p>稳定更新、粉丝增长、服务链路打通、APP 引流通路验证。</p></div>
         <div class="phase"><div class="time">第8个月后 · 深化运营期</div><h3>生态沉淀</h3><p>直播常态化、UGC 生态构建、APP 引流转化闭环深化。</p></div>
       </div>
-      <div class="footer"><span>实施路径</span><span>13 / 17</span></div>
+      <div class="footer"><span>第三部分 · 实施路径</span><span>13 / 17</span></div>
     </section>
 
-    <section class="slide" id="slide-14">
-      <div class="section-kicker">13 KPI与组织保障</div>
-      <h2>用清晰指标和合规机制保障长期运营质量</h2>
-      <div class="grid-3">
-        <div class="card"><div class="big-number">10万+</div><strong>抖音粉丝目标</strong><p>短视频 200+ 条，百万播放 2 个以上，综合互动率 >3%。</p></div>
-        <div class="card"><div class="big-number">3万+</div><strong>小红书粉丝目标</strong><p>图文/视频笔记 250+ 篇，万赞笔记 3 个以上，互动率 >5%。</p></div>
-        <div class="card"><div class="big-number">5类</div><strong>核心团队配置</strong><p>内容策划、拍摄剪辑、双平台运营、投流专员、直播运营。</p></div>
-      </div>
-      <div class="grid-2">
-        <div class="card"><strong>三级审核制度</strong><p>编辑初审、部门负责人复审、分管领导签发，覆盖内容准确性、品牌口径、保密与敏感风险。</p></div>
-        <div class="card"><strong>数据驱动运营</strong><p>每日监测、每周分析、每月复盘、季度校准，及时调整选题、投流和资源配置。</p></div>
-      </div>
-      <div class="footer"><span>组织保障与内容管控机制</span><span>14 / 17</span></div>
-    </section>
-
-    <section class="slide compliance-slide" id="slide-15">
-      <div class="section-kicker">14 合规与客户资产沉淀</div>
-      <h2>把法规、品牌资料和沟通偏好沉淀为可复用资产</h2>
-      <div class="compliance-grid">
-        <div class="compliance-evidence">
-          <div class="evidence-shot">
-            <img src="nanwang-assets/compliance-regulation-library.png" alt="行业法规基础合规库截图">
-            <span>法规库</span>
-          </div>
-          <div class="evidence-shot">
-            <img src="nanwang-assets/compliance-brand-assets.png" alt="客户品牌资产与偏好沉淀截图">
-            <span>品牌资产 / 客户偏好</span>
-          </div>
-        </div>
-        <div class="compliance-panel">
-          <div class="compliance-card">
-            <span class="num">01</span>
-            <div>
-              <strong>回收条例法规，形成基础合规库</strong>
-              <p>将广告法、行业监管要求、平台规则和客户内部口径统一沉淀为基础规则库，内容生成前先完成规则检索和风险提示，降低明显违规表述进入产出环节的概率。</p>
-              <div class="compliance-tags"><span>法规来源</span><span>行业规则</span><span>平台口径</span><span>风险前置</span></div>
-            </div>
-          </div>
-          <div class="compliance-card">
-            <span class="num">02</span>
-            <div>
-              <strong>打包产品信息，形成客户品牌资产</strong>
-              <p>不同客户的产品资料、品牌调性、禁用词、适用场景和历史素材会被结构化管理，内容产出先经过品牌资产校验，尽量保证表达符合客户真实情况和品牌边界。</p>
-              <div class="compliance-tags"><span>产品信息</span><span>品牌调性</span><span>禁用词</span><span>自动校验</span></div>
-            </div>
-          </div>
-          <div class="compliance-card">
-            <span class="num">03</span>
-            <div>
-              <strong>沉淀沟通记录，记住客户偏好</strong>
-              <p>将客户聊天反馈、审稿意见、选题偏好和过往调整记录沉淀为客户偏好资产，即便服务人员更换，也能延续既有理解，减少反复解释和重新磨合成本。</p>
-              <div class="compliance-tags"><span>聊天记录</span><span>审稿反馈</span><span>偏好记忆</span><span>换人不丢上下文</span></div>
-            </div>
-          </div>
-          <div class="compliance-bottom">
-            <strong>最终效果</strong>
-            <p>内容生产不是从零开始，而是在“合规规则 + 品牌资产 + 客户偏好”的三层资产约束下生成，既提高效率，也减少合规、口径和沟通理解上的反复。</p>
-          </div>
-        </div>
-      </div>
-      <div class="footer"><span>合规与客户资产沉淀机制</span><span>15 / 17</span></div>
-    </section>
-
-    <section class="slide ai-showcase-slide" id="slide-16">
+    <section class="slide ai-showcase-slide" id="slide-14">
       <div class="ai-showcase-head">
         <div>
-          <div class="section-kicker">16 AI创作能力展示</div>
-          <h2>从普通素材到高完成度内容，AI 让创意交付更快进入可发布状态</h2>
+          <div class="section-kicker">第四部分 · 制作能力样张 · 兑吧能力</div>
+          <h2>兑吧能力：从普通素材到高完成度内容，AI 让创意交付更快进入可发布状态</h2>
         </div>
         <p>AI创作的价值不只是“生成一张图”或“剪一条视频”，而是把口播、关键词、品牌信息和活动诉求转化为更有传播感的视觉内容，并形成可复制的交付流程。</p>
       </div>
@@ -5054,17 +5875,76 @@
         <div class="ai-feature"><small>04 可复制交付</small><strong>沉淀成长期生产流程</strong><p>把成功案例沉淀为提示词、版式和素材规范，支持持续复用。</p></div>
       </div>
       <div class="ai-showcase-note">对南网在线的启发：电力科普、服务教程、活动预热和城市热点内容，都可以用“实拍素材 + AI视觉升级 + 平台化适配”的方式提升完成度，让内容更容易被看见、被理解、被转发。</div>
-      <div class="footer"><span>AI创作能力展示</span><span>16 / 17</span></div>
+      <div class="footer"><span>第四部分 · 制作能力样张 · 兑吧能力</span><span>14 / 17</span></div>
+    </section>
+
+    <section class="slide compliance-slide" id="slide-15">
+      <div class="section-kicker">第四部分 · 合规能力展示 · 兑吧能力</div>
+      <h2>兑吧能力：公共服务内容不能只追求传播，更要把合规和口径控制前置</h2>
+      <div class="compliance-grid">
+        <div class="compliance-evidence">
+          <div class="evidence-shot">
+            <img src="nanwang-assets/compliance-regulation-library.png" alt="行业法规基础合规库截图">
+            <span>法规库</span>
+          </div>
+          <div class="evidence-shot">
+            <img src="nanwang-assets/compliance-brand-assets.png" alt="客户品牌资产与偏好沉淀截图">
+            <span>品牌资产 / 客户偏好</span>
+          </div>
+        </div>
+        <div class="compliance-panel">
+          <div class="compliance-card">
+            <span class="num">01</span>
+            <div>
+              <strong>建立电力服务内容口径库</strong>
+              <p>将电费、电价、缴费、报修、充电桩、停电提醒等高频服务场景的官方口径结构化沉淀，避免内容为了传播效果而误导用户。</p>
+              <div class="compliance-tags"><span>服务口径</span><span>常见问题</span><span>官方说法</span><span>风险前置</span></div>
+            </div>
+          </div>
+          <div class="compliance-card">
+            <span class="num">02</span>
+            <div>
+              <strong>沉淀品牌资料和禁用边界</strong>
+              <p>把南网在线、南网50Hz、APP 功能、活动信息、视觉规范和禁用表达统一管理，保证双平台内容既有平台感，也不偏离品牌边界。</p>
+              <div class="compliance-tags"><span>品牌资料</span><span>功能信息</span><span>禁用词</span><span>视觉规范</span></div>
+            </div>
+          </div>
+          <div class="compliance-card">
+            <span class="num">03</span>
+            <div>
+              <strong>建立三级审核和应急机制</strong>
+              <p>重要内容先审口径、再审表达、最后审发布风险；涉及舆情、停电、政策和用户投诉时，使用更严格的响应和审批链路。</p>
+              <div class="compliance-tags"><span>初审</span><span>复审</span><span>签发</span><span>舆情响应</span></div>
+            </div>
+          </div>
+          <div class="compliance-bottom">
+            <strong>最终效果</strong>
+            <p>内容生产不是先做完再补审，而是在“服务口径 + 品牌资产 + 审核机制”的约束下进行，既保证传播效率，也降低公共服务内容的合规风险。</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer"><span>第四部分 · 合规能力展示 · 兑吧能力</span><span>15 / 17</span></div>
+    </section>
+
+    <section class="slide" id="slide-16">
+      <div class="section-kicker">第五部分 · 指标目标</div>
+      <h2>用清晰的量化目标衡量品牌、流量与转化</h2>
+      <p class="lead">以粉丝量、爆款数量和点击量作为核心目标，分别对应品牌沉淀、内容曝光和投放转化，方便后续按月复盘和校准。</p>
+      <div class="grid-3">
+        <div class="card"><span class="metric-label">品牌 · 粉丝量</span><strong>双平台粉丝沉淀</strong><div class="metric-line"><b>抖音</b><span>15w+</span></div><div class="metric-line"><b>小红书</b><span>3w+</span></div><p>以粉丝增长作为品牌沉淀的核心指标。</p></div>
+        <div class="card"><span class="metric-label">流量 · 爆款曝光</span><strong>双平台爆款产出</strong><div class="metric-line"><b>抖音</b><span>5 条</span></div><div class="metric-line"><b>小红书</b><span>5 条</span></div><p>抖音点赞 5 万+；小红书点赞 1 万+。</p></div>
+        <div class="card"><span class="metric-label">转化 · 点击量</span><strong>广告组件点击</strong><div class="big-number">5k+</div><p>投放层面用户广告组件点击量，月平均预估大于 5000 次。</p></div>
+      </div>
+      <div class="footer"><span>南网在线双平台新媒体运营规划</span><span>16 / 17</span></div>
     </section>
 
     <section class="slide" id="slide-17">
-      <div class="section-kicker">结语</div>
-      <h2>让南网在线从“缴费工具”升级为用户身边的电力服务伙伴</h2>
-      <p class="lead">通过双平台差异化运营，南网在线可以在用户日常内容场景中建立服务认知、品牌温度与转化路径，最终回到 APP 完成深度服务绑定与用户资产沉淀。</p>
-      <div class="grid-3">
-        <div class="card"><strong>短期</strong><p>提升品牌声量与用户触达覆盖。</p></div>
-        <div class="card"><strong>中期</strong><p>打通服务链路与内容转化闭环。</p></div>
-        <div class="card"><strong>长期</strong><p>引导用户回归 APP，实现深度服务绑定。</p></div>
+      <div class="section-kicker">第五部分 · 结语</div>
+      <h2>让南网在线从服务入口，变成用户日常会想到的品牌</h2>
+      <p class="lead">先用内容解决问题，再用投放放大有效内容，最后把流量回收到服务和留存里，形成能持续滚动的双平台运营闭环。</p>
+      <div class="grid-2">
+        <div class="card"><strong>方法</strong><p>内容负责提供信号，投放负责放大，平台负责承接，三者一起跑。</p></div>
+        <div class="card"><strong>结果</strong><p>品牌有粉丝量，流量有爆款，转化有点击量，南网在线就能被持续看见。</p></div>
       </div>
       <div class="footer"><span>南网在线双平台新媒体运营规划</span><span>17 / 17</span></div>
     </section>
@@ -5211,6 +6091,45 @@
       });
     });
 
+    const logicPlans = [
+      {
+        title: "品牌：在外部平台建立“会解决问题”的南网在线",
+        body: "抖音负责把服务感带进日常信息流，小红书负责把攻略和经验沉淀成可信内容。两端共同改变用户对南网在线的认知：不只是 APP 工具，而是能解释、提醒、陪伴和解决生活用电问题的服务品牌。",
+        result: "让南网在线先被理解、被需要，再被使用",
+      },
+      {
+        title: "流量：用平台机制放大用户真正关心的服务问题",
+        body: "抖音用推荐流、热点和互动评论放大高频服务场景；小红书用搜索词、收藏和笔记长尾承接明确需求。内容不再只是官方发布，而是围绕用户正在问的问题组织选题和分发。",
+        result: "让服务内容主动进入用户日常信息流和搜索路径",
+      },
+      {
+        title: "转化：让每条内容都指向可完成的 APP 服务动作",
+        body: "围绕电费、发票、用电分析、充电桩、福利活动等场景设计内容，让用户从看见、收藏、评论进入南网在线 APP，完成服务体验和长期留存。",
+        result: "内容不是终点，APP 服务体验才是闭环",
+      },
+    ];
+
+    function renderLogicPlan(index) {
+      const plan = logicPlans[index] || logicPlans[0];
+      const stage = document.getElementById("logicStage");
+      stage.classList.add("is-switching");
+      window.setTimeout(() => {
+        document.getElementById("logicTitle").textContent = plan.title;
+        document.getElementById("logicBody").textContent = plan.body;
+        document.getElementById("logicResult").textContent = plan.result;
+        document.querySelectorAll(".logic-tab").forEach((tab, tabIndex) => {
+          const isActive = tabIndex === index;
+          tab.classList.toggle("is-active", isActive);
+          tab.setAttribute("aria-selected", String(isActive));
+        });
+        window.requestAnimationFrame(() => stage.classList.remove("is-switching"));
+      }, 140);
+    }
+
+    document.querySelectorAll(".logic-tab").forEach((tab) => {
+      tab.addEventListener("click", () => renderLogicPlan(Number(tab.dataset.logicIndex)));
+    });
+
     const animatedSlide = document.getElementById("slide-2");
     let slideTwoResetTimer = 0;
 
@@ -5248,235 +6167,20 @@
       }, { passive: true });
     }
 
-    const calendarPlans = [
-      {
-        label: "第 1 周 · 启动",
-        title: "先用高频问题打开账号可用感",
-        intro: "首周不追求复杂叙事，优先用“看得懂、搜得到、能收藏”的内容建立账号基本认知。",
-        douyin: ["用电避坑指南", "一度电 IP", "热点快评 / 节气内容"],
-        xhs: ["电费攻略", "低碳好物", "我家的省电美学"],
-        legend: ["目标：建立搜索资产", "加更：节点话题", "复盘：收藏率"],
-        dyCount: "4-5",
-        xhsCount: "5-7",
-        review: "1次",
-        dyNote: "用视频承担声量、热度和事件响应。",
-        xhsNote: "用图文与短视频沉淀搜索和收藏。",
-        reviewNote: "每周调整选题优先级，月末沉淀爆款方法。",
-      },
-      {
-        label: "第 2 周 · 预热",
-        title: "把 APP 功能和直播节点提前埋进去",
-        intro: "第二周开始让用户知道“南网在线可以解决什么”，用功能教程和福利预告为直播蓄水。",
-        douyin: ["一度电 IP", "抢修现场", "班组日记", "直播节点预热"],
-        xhs: ["南网在线玩转指南", "电费攻略", "低碳好物", "用户投稿精选"],
-        legend: ["目标：功能认知", "加更：直播预告", "复盘：点击意向"],
-        dyCount: "5-6",
-        xhsCount: "6-8",
-        review: "2类",
-        dyNote: "用人物和现场内容提升信任感。",
-        xhsNote: "用教程和清单承接搜索需求。",
-        reviewNote: "同时看互动质量和 APP 功能相关评论。",
-      },
-      {
-        label: "第 3 周 · 放大",
-        title: "直播周集中放大，把内容热度转成服务动作",
-        intro: "进入直播节点后，前中后三段都要有内容承接，预热拉预约、直播拉进入、结束后用切片延续热度。",
-        douyin: ["直播预热视频", "福利讲解切片", "南网好福利", "高互动视频二投"],
-        xhs: ["福利领取指南", "缴费 / 发票教程", "直播笔记复盘", "热门问题答疑"],
-        legend: ["目标：预约与进入", "加更：直播切片", "复盘：转化动作"],
-        dyCount: "6-8",
-        xhsCount: "7-9",
-        review: "日更",
-        dyNote: "直播前后都要有短视频接力。",
-        xhsNote: "用领取路径和常见问题降低决策成本。",
-        reviewNote: "直播周按天调整投流和内容节奏。",
-      },
-      {
-        label: "第 4 周 · 复盘",
-        title: "把高表现栏目留下，把低效内容快速换掉",
-        intro: "月底不只是汇报数据，而是把爆款标题、封面、选题角度沉淀成下月可复用的方法。",
-        douyin: ["循环高表现栏目", "直播切片二次分发", "评论问题再创作"],
-        xhs: ["收藏率高的选题延展", "搜索词补位", "低表现封面重做"],
-        legend: ["目标：方法沉淀", "加更：评论选题", "复盘：爆款模板"],
-        dyCount: "4-5",
-        xhsCount: "5-7",
-        review: "月报",
-        dyNote: "把有效视频拆成系列，而不是只看单条成绩。",
-        xhsNote: "优化长尾搜索词和封面首屏信息。",
-        reviewNote: "形成下月选题池、投流池和素材需求清单。",
-      },
-    ];
-
-    function renderCalendarPlan(index) {
-      const plan = calendarPlans[index] || calendarPlans[0];
-      const stage = document.getElementById("calendarStage");
-      stage.classList.add("is-switching");
-      window.setTimeout(() => {
-        document.getElementById("calendarLabel").textContent = plan.label;
-        document.getElementById("calendarTitle").textContent = plan.title;
-        document.getElementById("calendarIntro").textContent = plan.intro;
-        document.getElementById("calendarDouyin").innerHTML = plan.douyin.map((item) => `<li>${item}</li>`).join("");
-        document.getElementById("calendarXhs").innerHTML = plan.xhs.map((item) => `<li>${item}</li>`).join("");
-        document.getElementById("calendarLegend").innerHTML = plan.legend.map((item) => `<span>${item}</span>`).join("");
-        document.getElementById("calendarDyCount").textContent = plan.dyCount;
-        document.getElementById("calendarXhsCount").textContent = plan.xhsCount;
-        document.getElementById("calendarReview").textContent = plan.review;
-        document.getElementById("calendarDyNote").textContent = plan.dyNote;
-        document.getElementById("calendarXhsNote").textContent = plan.xhsNote;
-        document.getElementById("calendarReviewNote").textContent = plan.reviewNote;
-        document.querySelectorAll(".week-tab").forEach((tab, tabIndex) => {
-          const isActive = tabIndex === index;
-          tab.classList.toggle("is-active", isActive);
-          tab.setAttribute("aria-selected", String(isActive));
-        });
-        window.requestAnimationFrame(() => stage.classList.remove("is-switching"));
-      }, 140);
-    }
-
-    document.querySelectorAll(".week-tab").forEach((tab) => {
-      tab.addEventListener("click", () => renderCalendarPlan(Number(tab.dataset.weekIndex)));
-    });
-
-    const boostPlans = [
-      {
-        label: "抖音 DOU+ · 1-2 万/月",
-        title: "自然流量先跑，24 小时内追投",
-        intro: "筛选完播率、点赞率、评论率表现突出的短视频，用小额快投验证，再把服务入口和直播预约挂链放大。",
-        budget: "1-2万",
-        note: "适合用作日常内容加热池，不替代优质选题本身。",
-        path: [["01 发现", "自然流量出现高完播内容"], ["02 判断", "完播率 >30%，点赞率 >3%"], ["03 加热", "单条 500-2000 元追投"], ["04 回收", "沉淀挂链点击与互动人群"]],
-        bars: [["内容测试", "42%"], ["精准放大", "70%"], ["转化承接", "52%"]],
-      },
-      {
-        label: "直播投流 · 3-5 万/月",
-        title: "直播前中后分段投，不把预算压在一个时点",
-        intro: "预热期拉预约，开播前 30 分钟集中进场，直播后用高光切片二投，延长活动热度。",
-        budget: "3-5万",
-        note: "预算重点放在开播前 30 分钟和直播后 48 小时切片二投。",
-        path: [["01 预热", "预约素材拉起直播期待"], ["02 进场", "开播前 30 分钟提高在线"], ["03 承接", "福利与 APP 入口同步露出"], ["04 二投", "高光切片继续放大"]],
-        bars: [["预约预热", "58%"], ["直播进场", "86%"], ["切片二投", "64%"]],
-      },
-      {
-        label: "小红书薯条 / 聚光 · 2.5-6 万/月",
-        title: "优先放大收藏率高的笔记，而不是只看点赞",
-        intro: "电费攻略、充电桩生活、南网在线教程等内容如果收藏率高，说明有长期搜索价值，适合做稳定加热。",
-        budget: "2.5-6万",
-        note: "收藏率 >8%、互动率 >5% 的笔记进入加热池。",
-        path: [["01 筛选", "找到收藏率高的实用笔记"], ["02 扩词", "补充高频搜索关键词"], ["03 加热", "薯条 / 聚光提高曝光"], ["04 沉淀", "形成长期搜索入口"]],
-        bars: [["互动放大", "54%"], ["搜索占位", "82%"], ["收藏沉淀", "76%"]],
-      },
-      {
-        label: "搜索广告 · 节点灵活配置",
-        title: "抢占“电费怎么算”等高意图搜索词",
-        intro: "围绕用户主动搜索的问题做占位，优先覆盖阶梯电价、峰谷电、南方电网缴费、充电桩安装等关键词。",
-        budget: "灵活",
-        note: "搜索词投放更适合长尾，不适合只看短期播放量。",
-        path: [["01 选词", "提取高意图服务关键词"], ["02 匹配", "绑定对应教程和服务内容"], ["03 占位", "持续获得搜索流量"], ["04 回流", "引导到 APP 功能或服务页"]],
-        bars: [["服务意图", "88%"], ["内容匹配", "68%"], ["长期占位", "74%"]],
-      },
-    ];
-
-    function renderBoostPlan(index) {
-      const plan = boostPlans[index] || boostPlans[0];
-      const stage = document.getElementById("boostStage");
-      stage.classList.add("is-switching");
-      window.setTimeout(() => {
-        document.getElementById("boostLabel").textContent = plan.label;
-        document.getElementById("boostTitle").textContent = plan.title;
-        document.getElementById("boostIntro").textContent = plan.intro;
-        document.getElementById("boostBudget").textContent = plan.budget;
-        document.getElementById("boostNote").textContent = plan.note;
-        document.getElementById("boostPath").innerHTML = plan.path.map(([title, body]) => `<div class="boost-node"><b>${title}</b><span>${body}</span></div>`).join("");
-        document.getElementById("boostBars").innerHTML = plan.bars.map(([label, width]) => `<div class="budget-bar"><span>${label}</span><span style="--w: ${width}"></span></div>`).join("");
-        document.querySelectorAll(".boost-tab").forEach((tab, tabIndex) => {
-          const isActive = tabIndex === index;
-          tab.classList.toggle("is-active", isActive);
-          tab.setAttribute("aria-selected", String(isActive));
-        });
-        window.requestAnimationFrame(() => stage.classList.remove("is-switching"));
-      }, 140);
-    }
-
-    document.querySelectorAll(".boost-tab").forEach((tab) => {
-      tab.addEventListener("click", () => renderBoostPlan(Number(tab.dataset.boostIndex)));
-    });
-
-    const routePlans = [
-      {
-        label: "内容植入 · 不做硬广",
-        title: "在实用内容结尾，给用户一个继续使用的理由",
-        intro: "电费攻略、发票教程、充电桩办理、低碳好物都可以自然承接到 APP 的具体功能，而不是突然跳转下载。",
-        mini: "南网在线 APP",
-        screen: "用电服务入口",
-        actions: ["一键缴费", "电子发票", "用电分析", "智能提醒"],
-        result: "内容不是终点，服务体验才是转化闭环。",
-      },
-      {
-        label: "福利驱动 · 有明确利益点",
-        title: "用直播福利、积分和会员日降低第一次尝试门槛",
-        intro: "用户不是因为“下载 APP”而行动，而是因为可以领福利、查权益、参与活动，才愿意绑定户号并完成首次体验。",
-        mini: "活动承接",
-        screen: "福利领取中心",
-        actions: ["绑定户号", "直播扫码", "积分兑换", "会员日权益"],
-        result: "利益点负责第一次转化，服务价值负责后续留存。",
-      },
-      {
-        label: "服务牵引 · 独有功能",
-        title: "突出 APP 独有服务，制造必须回到 APP 的理由",
-        intro: "用电分析、智能提醒、电子发票、充电桩办理等内容要让用户意识到：看完内容之后，真正解决问题还在 APP 里。",
-        mini: "服务工具箱",
-        screen: "专属功能体验",
-        actions: ["电量查询", "报修进度", "充电桩办理", "发票下载"],
-        result: "把功能从“介绍”变成“现在就用”的服务入口。",
-      },
-      {
-        label: "复访留存 · 关系沉淀",
-        title: "让用户不是只来一次，而是形成周期性复访",
-        intro: "缴费提醒、账单推送、节能挑战、社区互动和会员活动，让 APP 从一次性工具变成日常用电助手。",
-        mini: "留存机制",
-        screen: "用电助手",
-        actions: ["缴费提醒", "账单推送", "省电挑战", "社区互动"],
-        result: "用稳定服务场景，让用户持续回到南网在线。",
-      },
-    ];
-
-    function renderRoutePlan(index) {
-      const plan = routePlans[index] || routePlans[0];
-      const stage = document.getElementById("routeStage");
-      stage.classList.add("is-switching");
-      window.setTimeout(() => {
-        document.getElementById("routeLabel").textContent = plan.label;
-        document.getElementById("routeTitle").textContent = plan.title;
-        document.getElementById("routeIntro").textContent = plan.intro;
-        document.getElementById("appMini").textContent = plan.mini;
-        document.getElementById("appScreenTitle").textContent = plan.screen;
-        document.getElementById("appActions").innerHTML = plan.actions.map((item) => `<span>${item}</span>`).join("");
-        document.getElementById("appResult").textContent = plan.result;
-        document.querySelectorAll(".route-tab").forEach((tab, tabIndex) => {
-          const isActive = tabIndex === index;
-          tab.classList.toggle("is-active", isActive);
-          tab.setAttribute("aria-selected", String(isActive));
-        });
-        window.requestAnimationFrame(() => stage.classList.remove("is-switching"));
-      }, 140);
-    }
-
-    document.querySelectorAll(".route-tab").forEach((tab) => {
-      tab.addEventListener("click", () => renderRoutePlan(Number(tab.dataset.routeIndex)));
-    });
-
     const ipLightbox = document.getElementById("ipLightbox");
     const ipLightboxImage = document.getElementById("ipLightboxImage");
     const ipLightboxTitle = document.getElementById("ipLightboxTitle");
 
     function closeIpLightbox() {
       ipLightbox.classList.remove("is-open");
+      ipLightbox.classList.remove("is-painpoint");
       ipLightbox.setAttribute("aria-hidden", "true");
       ipLightboxImage.src = "";
     }
 
-    document.querySelectorAll(".ip-preview").forEach((preview) => {
+    document.querySelectorAll(".ip-preview, .painpoint-shot").forEach((preview) => {
       preview.addEventListener("click", () => {
+        ipLightbox.classList.toggle("is-painpoint", preview.classList.contains("painpoint-shot"));
         ipLightboxImage.src = preview.dataset.full;
         ipLightboxImage.alt = `${preview.dataset.title}完整预览`;
         ipLightboxTitle.textContent = preview.dataset.title;
@@ -5614,25 +6318,6 @@
         ],
         output: ["建议频率：每周 1 条", "形式：竖屏实验短视频", "目标：收藏 + 评论讨论"],
       },
-      repair: {
-        kicker: "抢修现场 · 二级规划",
-        heading: "把抢修现场做成真实服务故事：从故障发生到灯重新亮起",
-        planTitle: "栏目规划与内容方法",
-        intro: "“抢修现场”采用“强冲突标题 + 真实现场画面 + 抢修过程拆解”的表达方法，把用户看不见的响应速度、专业判断和一线辛苦讲清楚，建立服务信任和品牌温度。",
-        shots: [
-          ["nanwang-assets/douyin-repair-heat.png", "高温天气爬杆作业栏目示意", "高温作业"],
-          ["nanwang-assets/douyin-repair-rain.png", "暴雨夜抢修队出发栏目示意", "暴雨出发"],
-          ["nanwang-assets/douyin-repair-call.png", "凌晨接到报修电话栏目示意", "故障定位"],
-          ["nanwang-assets/douyin-repair-outage.png", "停电抢修经历栏目示意", "抢修过程"],
-        ],
-        items: [
-          ["极端天气现场", "高温、暴雨、台风、深夜等场景，突出电力人仍在路上和岗位上。"],
-          ["从报修到定位", "用时间线解释接单、排查、定位、隔离故障、恢复供电的真实流程。"],
-          ["抢修不是一句马上好", "回应用户最关心的等待原因，把安全、调度、设备检查讲明白。"],
-          ["一线人物故事", "记录汗水、协作、装备和班组日常，让服务账号有真实的人和情绪。"],
-        ],
-        output: ["建议频率：每周 1 条", "形式：现场纪实 + 字幕拆解", "目标：信任感 + 评论理解"],
-      },
       pitfall: {
         kicker: "用电避坑指南 · 二级规划",
         heading: "把高频用电问题做成可执行的避坑提醒",
@@ -5671,24 +6356,43 @@
         ],
         output: ["建议频率：每周 1 条", "形式：福利清单 + 路径演示", "目标：点击入口 + APP 回流"],
       },
-      diary: {
-        kicker: "班组日记 · 二级规划",
-        heading: "把一线班组做成有姓名、有日常、有温度的人设内容",
+      liveclip: {
+        kicker: "直播精华切片 · 二级规划",
+        heading: "把直播内容拆成可持续分发的短视频资产",
         planTitle: "栏目规划与内容方法",
-        intro: "“班组日记”采用“第一人称视角 + 一天时间线 + 真实工作细节”的表达方法，让用户看到服务背后的人、工具、流程和情绪，补足官方账号的人情味。",
+        intro: "“直播精华切片”采用“一个问题 + 一个答案 + 一个行动入口”的表达方法，把直播中的福利讲解、功能演示和高频问答拆成 15-30 秒短内容，持续为下一场直播和 APP 服务入口蓄水。",
         shots: [
-          ["nanwang-assets/douyin-diary-female.png", "女电力人的一天栏目示意", "人物日记"],
-          ["nanwang-assets/douyin-diary-day.png", "电力班组的一天栏目示意", "一天时间线"],
-          ["nanwang-assets/douyin-diary-station.png", "变电站值守日记栏目示意", "值守细节"],
-          ["nanwang-assets/douyin-diary-newbie.png", "新员工跟班巡线栏目示意", "新人视角"],
+          ["nanwang-assets/douyin-benefit-live.png", "直播间福利领取栏目示意", "直播福利"],
+          ["nanwang-assets/douyin-benefit-entry.png", "交电费也能薅福利栏目示意", "活动入口"],
+          ["nanwang-assets/douyin-benefit-app.png", "南网在线APP功能栏目示意", "功能演示"],
+          ["nanwang-assets/douyin-benefit-points.png", "积分兑换福利栏目示意", "问答切片"],
         ],
         items: [
-          ["一线人物日记", "以员工第一视角记录工具包、工单、深夜电话、巡检路上的真实片段。"],
-          ["班组一天时间线", "从早会、巡检、设备消缺、午餐到最后一单报修，形成连续叙事。"],
-          ["岗位细节公开", "展示普通人看不到的安全规范、设备检查、值守机制和协作分工。"],
-          ["新人跟班成长", "用新员工视角讲第一次巡线、第一次抢修、第一次值守，天然有故事线。"],
+          ["福利高光", "截取直播中最有利益感的 10 秒，用字幕和画面强化“能领什么、在哪里领”。"],
+          ["功能答疑", "把用户问得最多的问题拆成单条视频，例如发票、缴费、积分、活动规则。"],
+          ["预约预热", "用上一场高互动片段预告下一场直播，把内容热度转成预约和关注。"],
+          ["评论再分发", "把评论区问题二次剪成答疑切片，让直播内容延长生命周期。"],
         ],
-        output: ["建议频率：每周 1 条", "形式：第一人称 Vlog", "目标：人设亲近 + 品牌温度"],
+        output: ["建议频率：直播后 3-5 条", "形式：高光切片 + 字幕提炼", "目标：预约 + APP 回流"],
+      },
+      drama: {
+        kicker: "南网小剧场 · 二级规划",
+        heading: "以电力小哥为主角，每集讲一个暖心用电小故事",
+        planTitle: "栏目规划与内容方法",
+        intro: "“南网小剧场”采用“一个用户小困扰 + 电力小哥出现 + 温柔解释与解决”的固定结构，用 30-60 秒小故事承接电费异常、安全用电、合租账单、远程复电等服务场景。",
+        shots: [
+          ["nanwang-assets/drama-rain-call.png", "暴雨夜的一通电话选题配图", "暴雨夜的一通电话"],
+          ["nanwang-assets/drama-roommate-bill.png", "室友间电费怎么算选题配图", "室友间电费怎么算"],
+          ["nanwang-assets/drama-first-bill.png", "第一次自己缴电费选题配图", "第一次自己缴电费"],
+          ["nanwang-assets/drama-midnight-power.png", "深夜跳闸的虚惊一场选题配图", "深夜跳闸的虚惊一场"],
+        ],
+        items: [
+          ["暴雨夜的一通电话", "台风暴雨天担心家里漏电，电力小哥远程安抚并给出家庭用电安全提示。"],
+          ["室友间电费怎么算", "合租房电费分摊说不清，电力小哥用账单拆解和用电分析帮大家算明白。"],
+          ["第一次自己缴电费", "刚毕业独居的年轻人看不懂阶梯电价，电力小哥把账单和缴费步骤讲清楚。"],
+          ["深夜跳闸的虚惊一场", "半夜突然断电，电力小哥远程一步步指导复电，把慌张变成安心。"],
+        ],
+        output: ["建议频率：每周 1 条", "形式：电力小哥固定主角短剧", "目标：完播 + 评论提问"],
       },
       freshnews: {
         kicker: "南网新鲜事 · 二级规划",
@@ -5857,44 +6561,6 @@
         ],
       },
       {
-        title: "电费攻略",
-        badge: "高频搜索 + 账单自查",
-        intro: "把用户最常搜、最容易误解的电费问题做成可收藏图解：从账单异常、阶梯电价、峰谷电到租房避坑，帮助用户先看懂再行动。",
-        method: "一个高频疑问 + 一张图讲清规则 + 一个自查动作",
-        steps: ["问题直给", "规则图解", "行动提示"],
-        tags: ["电费异常", "阶梯电价", "峰谷电", "租房账单"],
-        cases: [
-          {
-            title: "电费突然变高，先别急着怀疑电表",
-            note: "用真实账单视觉承接焦虑，把用电量、阶梯分档和账单周期标出来，引导用户先做基础排查。",
-            focus: ["用户痛点：本月电费突然上涨", "内容讲法：圈出账单里的关键数字", "适合形式：强情绪标题 + 账单拆解图"],
-            img: "nanwang-assets/xhs-compressed/bill-strange-check.jpg",
-            alt: "电费突然变高先别急着怀疑电表选题封面",
-          },
-          {
-            title: "阶梯电价到底怎么算，一张图看懂",
-            note: "把第一档、第二档、第三档做成表格式图解，再用 350 度电的例子算一遍，降低用户理解门槛。",
-            focus: ["用户痛点：不知道为什么越用越贵", "内容讲法：分档规则 + 示例计算", "适合形式：知识图解 + 收藏型长图"],
-            img: "nanwang-assets/xhs-compressed/tier-price-explain.jpg",
-            alt: "阶梯电价到底怎么算一张图看懂选题封面",
-          },
-          {
-            title: "峰谷电价怎么用才划算",
-            note: "用时间轴讲清谷段、平段、峰段，匹配洗衣机、热水器、办公、老人小孩等家庭场景。",
-            focus: ["用户痛点：听过峰谷电但不会安排", "内容讲法：时间轴 + 家庭类型匹配", "适合形式：蓝色攻略图 + 场景清单"],
-            img: "nanwang-assets/xhs-compressed/peak-valley-price.jpg",
-            alt: "峰谷电价怎么用才划算选题封面",
-          },
-          {
-            title: "租房电费怎么看有没有被多收",
-            note: "针对租房党做避坑内容：看用电量、核对单价、留意加价和账单截图，形成容易转发的实用指南。",
-            focus: ["用户痛点：担心房东多收电费", "内容讲法：手机账单界面 + 红圈标注", "适合形式：避坑指南 + 评论区答疑"],
-            img: "nanwang-assets/xhs-compressed/rental-bill-check.jpg",
-            alt: "租房电费怎么看有没有被多收选题封面",
-          },
-        ],
-      },
-      {
         title: "充电桩生活",
         badge: "新能源车主 + 安装办理",
         intro: "围绕新能源车主最关心的家用充电桩问题，做成从安装前沟通、安全疑问、首次安装到小区限制的实用指南。",
@@ -5933,44 +6599,6 @@
         ],
       },
       {
-        title: "万家灯火",
-        badge: "情绪共鸣 + 人物故事",
-        intro: "把“灯火”从公共服务讲成具体的人：山里巡线、城市守夜、春节归途、停电后的第一盏灯，用有温度的故事沉淀品牌好感。",
-        method: "一个灯火场景 + 一个真实人物 + 一句情绪记忆点",
-        steps: ["场景入题", "人物承接", "情绪留存"],
-        tags: ["人物故事", "城市灯火", "回家时刻", "温暖共鸣"],
-        cases: [
-          {
-            title: "你家亮灯的背后，有人正在山里巡线",
-            note: "用山路、夜色和远处灯火建立画面冲击，把电力人的工作从“看不见”变成“被记住”。",
-            focus: ["用户情绪：日常亮灯其实有人守护", "内容讲法：远景灯火 + 一线人物背影", "适合形式：电影感封面 + 巡线故事"],
-            img: "nanwang-assets/xhs-compressed/lights-mountain-patrol.jpg",
-            alt: "你家亮灯的背后有人正在山里巡线选题封面",
-          },
-          {
-            title: "一座城市入夜后，电力人还在忙什么",
-            note: "把城市夜景和高空作业结合，用纪录片口吻呈现夜幕下的检修、值守和应急保障。",
-            focus: ["用户情绪：城市越热闹，守护越安静", "内容讲法：REC 视角 + 城市夜景切入", "适合形式：纪录片感图文 + 人物旁白"],
-            img: "nanwang-assets/xhs-compressed/lights-city-night-guardian.jpg",
-            alt: "一座城市入夜后电力人还在忙什么选题封面",
-          },
-          {
-            title: "春节回家路上，那些守着电的人",
-            note: "借春节返乡的强情绪场景，讲电力人在车站、沿线、服务现场默默点亮团圆时刻。",
-            focus: ["用户情绪：万家团圆时有人默默值守", "内容讲法：返乡人群 + 电力人特写", "适合形式：节日节点海报 + 温情短文"],
-            img: "nanwang-assets/xhs-compressed/lights-spring-festival-way-home.jpg",
-            alt: "春节回家路上那些守着电的人选题封面",
-          },
-          {
-            title: "停电后最快被点亮的那一盏灯",
-            note: "从用户视角讲临时停电后的安心瞬间，把抢修结果落到家里那盏先亮起来的灯。",
-            focus: ["用户情绪：黑暗里最需要确定感", "内容讲法：家庭停电场景 + 灯光恢复瞬间", "适合形式：情绪标题 + 居家故事图文"],
-            img: "nanwang-assets/xhs-compressed/lights-after-outage.jpg",
-            alt: "停电后最快被点亮的那一盏灯选题封面",
-          },
-        ],
-      },
-      {
         title: "低碳好物",
         badge: "好物测评 + 绿色生活",
         intro: "把低碳生活从口号变成可买、可换、可照做的生活选择：智能插座、小家电、灯具改造、绿色家居，用真实场景完成种草。",
@@ -6005,6 +6633,44 @@
             focus: ["用户痛点：想让家更好看也想省电", "内容讲法：前后对比 + 灯具清单", "适合形式：改造对比图 + 购买建议"],
             img: "nanwang-assets/xhs-compressed/lowcarbon-lighting-before-after.jpg",
             alt: "家里换了这些灯氛围感和省电都拿下选题封面",
+          },
+        ],
+      },
+      {
+        title: "万家灯火",
+        badge: "人物故事 + 公益传播",
+        intro: "把“万家灯火”从单纯的守护叙事，扩展成更完整的南网公益表达：一边讲一线电力人的守护，一边讲南网在乡村振兴、志愿服务、科普教育、关爱儿童等场景里的公益行动，让品牌温度更具体。",
+        method: "一个灯火场景 + 一个公益行动 + 一句能被记住的品牌表达",
+        steps: ["人物入题", "公益展开", "品牌沉淀"],
+        tags: ["公益传播", "乡村振兴", "志愿服务", "科普关爱"],
+        cases: [
+          {
+            title: "你家亮灯的背后，有人正在山里巡线",
+            note: "用山路、夜色和远处灯火建立画面冲击，把电力人的工作从“看不见”变成“被记住”。",
+            focus: ["用户情绪：日常亮灯其实有人守护", "内容讲法：远景灯火 + 一线人物背影", "适合形式：电影感封面 + 巡线故事"],
+            img: "nanwang-assets/xhs-compressed/lights-mountain-patrol.jpg",
+            alt: "你家亮灯的背后有人正在山里巡线选题封面",
+          },
+          {
+            title: "一座城市入夜后，电力人还在忙什么",
+            note: "把城市夜景和高空作业结合，用纪录片口吻呈现夜幕下的检修、值守和应急保障。",
+            focus: ["用户情绪：城市越热闹，守护越安静", "内容讲法：REC 视角 + 城市夜景切入", "适合形式：纪录片感图文 + 人物旁白"],
+            img: "nanwang-assets/xhs-compressed/lights-city-night-guardian.jpg",
+            alt: "一座城市入夜后电力人还在忙什么选题封面",
+          },
+          {
+            title: "南网公益在做什么，除了点亮灯火还有这些事",
+            note: "把南网的公益动作拆成几个具体场景：乡村振兴里的电力帮扶、志愿服务里的社区行动、科普教育里的儿童课堂、公益项目里的物资与陪伴，让内容从一句口号变成一组看得见的例子。",
+            focus: ["用户情绪：品牌不只是在供电，也在做公益", "内容讲法：场景拼图 + 公益案例清单", "适合形式：合集海报 + 公益信息流"],
+            img: "nanwang-assets/xhs-compressed/lights-spring-festival-way-home.jpg",
+            alt: "南网公益在做什么除了点亮灯火还有这些事选题封面",
+          },
+          {
+            title: "停电后最快被点亮的那一盏灯",
+            note: "从用户视角讲临时停电后的安心瞬间，把抢修结果落到家里那盏先亮起来的灯，再延展到南网如何把这种守护延伸到社区公益和民生关怀。",
+            focus: ["用户情绪：黑暗里最需要确定感", "内容讲法：家庭停电场景 + 公益式守护延展", "适合形式：情绪标题 + 居家故事图文"],
+            img: "nanwang-assets/xhs-compressed/lights-after-outage.jpg",
+            alt: "停电后最快被点亮的那一盏灯选题封面",
           },
         ],
       },
